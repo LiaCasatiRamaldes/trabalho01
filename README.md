@@ -44,11 +44,11 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
-    1- Relatório da faixa etaria que mais agride.<br>
-    2- Relatório da faixa etaria que mais é vitima da violÊcia doméstica.<br>
+    1- Relatório com os sons mais captados.<br>
+    2- Relatório com as idades das vitimas que mais registraram no sistema.<br>
     3- Relatório do adiministrador que mais registrou casos de violencia domestica.<br>
     4- Relatório com as cidades/bairros/estados onde mais ocorrem violências domésticas.<br>
-    5- Relatório 
+    5- Relatório com as delegacias que mais registraram boletins de ocorrência.<br> 
     
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
