@@ -44,9 +44,9 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
-    1- Relatório com o nome, o endereço e o email da delegacias.<br>
-    2- Relatório com os dados do usuário do sistema.<br>
-    3- Relatório com os dados do adiministrador do sistema.<br>
+    1- .<br>
+    2- .<br>
+    3- Relatório do adiministrador que mais registrou casos de violencia domestica.<br>
     4- Relatório com as cidades/bairros/estados onde mais ocorrem violências domésticas.<br>
     5- 
     
