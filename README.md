@@ -47,6 +47,8 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
     1- Relatório com o nome, o endereço e o email da delegacias.<br>
     2- Relatório com os dados do usuário do sistema.<br>
     3- Relatório com os dados do adiministrador do sistema.<br>
+    4- Relatório com as cidades/bairros/estados onde mais ocorrem violências domésticas.<br>
+    5- 
     
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
