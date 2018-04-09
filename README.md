@@ -43,14 +43,10 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
-    - Qual a função do projeto?<br>
-    Ajudar mulheres que sofrem com a violência doméstica.<br><br>
     
-    - Como ele funciona?<br>
-    
-    - Qual seu publico alvo?<br>
-    - Como funciona o sistema de armazenamento de dados?<br>
-    - 
+    1- Relatório com o nome, o endereço e o email da delegacias.<br>
+    2- Relatório com os dados do usuário do sistema.<br>
+    3- Relatório com os dados do adiministrador do sistema.<br>
     
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
