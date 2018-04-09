@@ -42,7 +42,12 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
-    b) Crie uma lista com os 10 principais relatórios que poderão ser obtidos por meio do sistema proposto!
+    b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!
+    - Qual a função do projeto?
+    - Como ele funciona?
+    - Qual seu publico alvo?
+    - Como funciona o sistema de armazenamento de dados?
+    - 
     
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
