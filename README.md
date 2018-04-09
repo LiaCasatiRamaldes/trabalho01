@@ -44,7 +44,10 @@ https://balsamiq.cloud/s99ubio/pvms0de/r6C13
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     - Qual a função do projeto?<br>
+    Ajudar, mulheres que sofrem com a violência doméstica.<br><br>
+    
     - Como ele funciona?<br>
+    
     - Qual seu publico alvo?<br>
     - Como funciona o sistema de armazenamento de dados?<br>
     - 
