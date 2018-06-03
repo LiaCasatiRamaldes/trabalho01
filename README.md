@@ -39,7 +39,7 @@ https://balsamiq.cloud/su001vj/p3k5h6r/r2278
     e deve ser criada antes do modelo conceitual
     c) Após criada esta tabela não deve ser modificada, pois será comparada com os resultados finais na conclusão do trabalho
    
-    
+ https://docs.google.com/spreadsheets/d/1UXRYjKHchwCo-HD30RMxRL9Y9hU9CFRYVPQfjBmc3Dw/edit?usp=sharing   
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
