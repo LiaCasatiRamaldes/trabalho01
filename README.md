@@ -38,6 +38,7 @@ https://balsamiq.cloud/su001vj/p3k5h6r/r2278
     b) Esta tabela tem a intenção de simular um relatório com todos os dados que serão armazenados 
     e deve ser criada antes do modelo conceitual
     c) Após criada esta tabela não deve ser modificada, pois será comparada com os resultados finais na conclusão do trabalho
+   
     
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
