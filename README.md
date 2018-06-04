@@ -30,7 +30,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 Neste ponto a codificação não e necessária, somente as ideias de telas devem ser desenvolvidas. O princípio aqui é pensar na criação da interface para identificar possíveis informações a serem armazenadas e/ou descartadas <br>
 
 
-(https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/arquivos/Sensor%20de%20Viol%C3%AAncia%20Dom%C3%A9stica.pdf?raw=true "Empresa Devcom")
+(https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/arquivos/Sensor%20de%20Viol%C3%AAncia%20Dom%C3%A9stica.pdf?raw=true "Sensor De Violencia Domestica")
 
 
 
