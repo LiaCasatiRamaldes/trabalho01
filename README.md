@@ -13,7 +13,7 @@ Thamiris Moreira:thamirismais@gmail.com <br>
 Este documento contém a especificação do projeto do banco de dados, Sensor de Violência Doméstica, <br>
 e motivação da escolha realizada. <br>
 
-> A empresa "..." visa colaborar com desenvolvimento de projetos para reduzir a violência doméstica. Sabendo dos desafios enfrentados por mulheres que residem junto de seus parceiros e que estão em um relacionamento abusivo. Ficamos motivados com o desenvolvimento deste sistema. O Sistema "..." tem como objetivo captar sons que possam ser associados a violência como, tapas, socos, gritos, bater de portas, coisas quebrando e caso sejam analisados em conjuntos ou repetidamente, o sistema acionará o departamento policial mais próximo.
+> A empresa LiaThamirisLTDA visa colaborar com desenvolvimento de projetos para reduzir a violência doméstica. Sabendo dos desafios enfrentados por mulheres que residem junto de seus parceiros e que estão em um relacionamento abusivo. Ficamos motivados com o desenvolvimento deste sistema. O Sistema HomeViolence tem como objetivo captar sons que possam ser associados a violência como, tapas, socos, gritos, bater de portas, coisas quebrando e caso sejam analisados em conjuntos ou repetidamente, o sistema acionará o departamento policial mais próximo.
 
 
 ### 3.MINI-MUNDO Novo<br>
