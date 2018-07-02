@@ -167,7 +167,9 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
-
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0003.jpg)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0006.jpg)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0007.jpg)
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
 
