@@ -232,16 +232,30 @@ ALTER TABLE possui_Casa_captura ADD CONSTRAINT FK_possui_Casa_captura_0
         c) formato .SQL
         
         
- insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end ) values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
-																				('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
-                                                                                ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
-                                                                                ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
-                                                                                ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
-                                                                                ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
-                                                                                ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
-                                                                                ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
-                                                                                ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
-                                                                                ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
+ insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end ) 
+ values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
+	('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
+        ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
+        ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
+        ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
+        ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
+        ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
+        ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
+        ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
+        ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
+										
+										
+insert into sensor (cod_sensor, tipo, nome) values('123-456-789', 'Microfone Mega', 'tapa023.wav'),
+						  ('234-567-897', 'Sensor Sonoro Ky-038', 'tapa077.wav'),
+                                                  ('435-769-142',	'Microfone Mega', 'soco002.wav'),
+                                                  ('268-916-031', 'Microfone Mega', 'baterPorta015.wav'),
+                                                  ('469-911-270',	'Sensor Sonoro Ky-038', 'xingamentoVM008.wav'),
+                                                  ('927-881-236',	'Sensor Sonoro Ky-038', 'xingamentoVF008.wav'),
+                                                  ('871-903-054',	'Microfone Mega', 'coisaQeubrando007.wav'),
+                                                  ('673-189-037',	'Sensor Sonoro Ky-033', 'soco038.wav'),
+                                                  ('824-517-900',	'Microfone Mega', 'baterPorta100.wav'),
+                                                  ('735-357-573',	'Sensor Sonoro Ky-035', 'tapa056.wav');	
+						  
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
         (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
