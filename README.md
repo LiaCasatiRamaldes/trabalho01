@@ -143,12 +143,167 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 
 ### 7	MODELO FÍSICO<br>
         a) inclusão das instruções de criacão das estruturas DDL 
-        (criação de tabelas, alterações, etc..)          
+        (criação de tabelas, alterações, etc..)
+        
+        
+CREATE TABLE Endereço (
+    estado varChar(100),
+    cidade varChar(100),
+    bairro varChar(100),
+    compl varChar(100),
+    Nº int,
+    rua varChar(100),
+    cod_end varChar(100) PRIMARY KEY
+);
+
+CREATE TABLE Sensor (
+    cod_sensor varChar(100) PRIMARY KEY,
+    tipo varChar(100),
+    nome varChar(100)
+);
+
+CREATE TABLE Pessoa (
+    nome varChar(100),
+    cpf varChar(100) PRIMARY KEY,
+    rg int,
+    sexo char,
+    idade int,
+    celular varChar(100)
+);
+
+CREATE TABLE Usuário (
+    tipo_sanguineo Varchar(3),
+    numero_emergencial varchar(100),
+    FK_Pessoa_cpf varChar(100) PRIMARY KEY
+);
+
+CREATE TABLE Policial (
+    nome varChar(100),
+    email varChar(100),
+    usuário varChar(100) PRIMARY KEY,
+    senha varChar(100),
+    FK_Delegacia_Codigo varChar(100)
+);
+
+CREATE TABLE Casa (
+    FK_Endereço_cod_end varChar(100),
+    FK_Delegacia_Codigo varChar(100)
+);
+
+CREATE TABLE Delegacia (
+    Telefone varChar(100),
+    Codigo varChar(100) PRIMARY KEY,
+    FK_Endereço_cod_end varChar(100)
+);
+
+CREATE TABLE Captura (
+    codigo_captura varChar(100) PRIMARY KEY,
+    arquivo_som varChar(100),
+    data_ini date,
+    data_fim date,
+    hora_ini time,
+    hora_fim time
+);
+
+CREATE TABLE Possui (
+    FK_Pessoa_cpf varChar(100)
+);
+
+CREATE TABLE depende (
+    FK_Sensor_cod_sensor varChar(100),
+    FK_Captura_codigo_captura varChar(100)
+);
+
+CREATE TABLE possui (
+    FK_Captura_codigo_captura varChar(100)
+);
+ 
+ALTER TABLE Usuário ADD CONSTRAINT FK_Usuário_1
+    FOREIGN KEY (FK_Pessoa_cpf)
+    REFERENCES Pessoa (cpf)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Policial ADD CONSTRAINT FK_Policial_1
+    FOREIGN KEY (FK_Delegacia_Codigo)
+    REFERENCES Delegacia (Codigo)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_0
+    FOREIGN KEY (FK_Endereço_cod_end)
+    REFERENCES Endereço (cod_end)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_1
+    FOREIGN KEY (FK_Delegacia_Codigo)
+    REFERENCES Delegacia (Codigo)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
+    FOREIGN KEY (FK_Endereço_cod_end)
+    REFERENCES Endereço (cod_end)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_0
+    FOREIGN KEY (FK_Pessoa_cpf)
+    REFERENCES Pessoa (cpf)
+    ON DELETE RESTRICT ON UPDATE RESTRICT;
+ 
+ALTER TABLE depende ADD CONSTRAINT FK_depende_0
+    FOREIGN KEY (FK_Sensor_cod_sensor)
+    REFERENCES Sensor (cod_sensor)
+    ON DELETE RESTRICT ON UPDATE RESTRICT;
+ 
+ALTER TABLE depende ADD CONSTRAINT FK_depende_1
+    FOREIGN KEY (FK_Captura_codigo_captura)
+    REFERENCES Captura (codigo_captura)
+    ON DELETE SET NULL ON UPDATE CASCADE;
+ 
+ALTER TABLE possui ADD CONSTRAINT FK_possui_0
+    FOREIGN KEY (FK_Captura_codigo_captura)
+    REFERENCES Captura (codigo_captura)
+    ON DELETE SET NULL ON UPDATE CASCADE;
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
         b) formato .SQL
+        
+ insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end )
+values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
+		('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
+        ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
+        ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
+        ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
+        ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
+        ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
+        ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
+        ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
+        ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
+
+insert into sensor (cod_sensor, tipo, nome) 
+values('123-456-789', 'Microfone Mega', 'tapa023.wav'),
+       ('234-567-897', 'Sensor Sonoro Ky-038', 'tapa077.wav'),
+       ('435-769-142',	'Microfone Mega', 'soco002.wav'),
+       ('268-916-031', 'Microfone Mega', 'baterPorta015.wav'),
+       ('469-911-270',	'Sensor Sonoro Ky-038', 'xingamentoVM008.wav'),
+       ('927-881-236',	'Sensor Sonoro Ky-038', 'xingamentoVF008.wav'),
+       ('871-903-054',	'Microfone Mega', 'coisaQeubrando007.wav'),
+       ('673-189-037',	'Sensor Sonoro Ky-033', 'soco038.wav'),
+       ('824-517-900',	'Microfone Mega', 'baterPorta100.wav'),
+       ('735-357-573',	'Sensor Sonoro Ky-035', 'tapa056.wav');
+                                                    
+
+insert into pessoa (nome, cpf, rg, sexo, idade, celular)
+values ('Rosana Gabriel', '123.456.789-01',	1010, 'F', 48, '9999-8765'),
+		('Jislaine Russo', '765.234.987-08', 2345, 'F',	36,	'9999-7654'),
+        ('Joana Avila', '324.960.845-07', 2020,	'F', 41, '9999-6543'),
+        ('Maria Penhor', '196.936.726-09', 8080, 'F', 53, '9999-5432'),
+        ('Marina Valter', '275.874.098-12', 3030, 'F', 33, '9999-4321'),
+        ('Gabriel Penhasco', '562.916.734-55', 9090, 'M', 50, '9998-0987'),
+        ('Juliana Almaral',	'165.079.945-16', 4040, 'F', 45, '9998-0876'),
+        ('Cristiane Louve', '065.164.807-03', 5050, 'F', 49, '9998-9876'),
+        ('Christian de Jesus', '761.092.845-05', 9876, 'M', 38, '9998-7654'),
+        ('Betina Oliveira',	'495.812.384-04', 4567, 'F', 49, '9998-5432');
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
