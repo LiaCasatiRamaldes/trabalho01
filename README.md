@@ -75,19 +75,64 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     [Grupo02]: [Nomes dos que participaram na avaliação]
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 #### 5.2 DECISÕES DE PROJETO
-    [atributo]: [descrição da decisão]
+   
+   Campo endereço: em nosso projeto optamos por um campo emdereço, porque...
+   Campo pessoa:
     
-    EXEMPLO:
-    a) Campo endereço: em nosso projeto optamos por um campo multivalorado e composto, pois a empresa 
-    pode possuir para cada departamento mais de uma localização... 
-    b) justifique!
+    
+    
 
 #### 5.3 DESCRIÇÃO DOS DADOS 
-    [objeto]: [descrição do objeto]
+   
+    PESSOA: Tabela que armazena as informações relativas ao usuário<br>
+    Nome: Campo que armazena o nome completo de cada usuário cadastrado no sistema.<br>
+    CPF: Campo que armazena o número de Cadastro de Pessoa Física para cada usuário cadastrado no sistema.<br>
+    RG: Campo que armazena o número da Carteira de Identidade/RG (Registro Geral) de cada usuário cadastrado no sistema.<br>
+    Idade: Campo que armazena a idade em anos de cada usuário cadastrado no sistema.<br>
+    Sexo: Campo que armazena o sexo de cada usuário cadastrado no sistema.<br>  
+    Celular: Campo não obrigatório que armazena o telefone movél para contato de cada usuário cadastrado no sistema.<br> 
     
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+    USUÁRIO: Tabela que herda os campos de Pessoa<br>
+    (Nome, CPF, RG, Idade, Sexo, Celular) já citados acima.<br>
+    Celular de emergência: Campo não obrigatório que armazena o telefone movél para contato de algum parente/amigo de confiança de cada     usuário cadastrado no sistema.<br> 
+    Tipo Sanguíneo: Campo que armazena o tipo sanguíneo de cada usuário.<br>
+    
+    ENDEREÇO: Tabela que armazena as informações relativas ao endereço da delegacia ou do usuário<br>
+    Estado: Campo que armazena o estado que está localizada a residência/delegacia.<br>
+    Cidade: Campo que armazena a cidade que está localizada a residência/delegacia.<br>
+    Bairro: Campo que armazena o bairro que está localizada a residência/delegacia.<br>
+    Rua: Campo que armazena a rua que está localizada a residência/delegacia.<br>
+    Complemento: Campo não obrigatório que armazena uma informação complementar ao endereço(Nome do prédio, ...) que está localizado a       residência/delegacia.<br>
+    Número: Campo que armazena o número da residência/delegacia.<br>
+    Código Endereço: Campo que atribui um código para o endereço cadastrado, para que aceite um endereço repetido e não cause nenhum         erro no sistema.<br>
+    
+    DELEGACIA: Tabela que herda os campos de Endereço<br>
+    (Estado, Cidade, Bairro, Rua, Complemento, Número, Código Endereço) já citados acima.<br>
+    Telefone: Campo que armazena o telefone para contato de cada delegacia cadastrado no sistema.<br> 
+    Código: Campo que atribui um código para a delegacia cadastrada.<br>
+    
+    CASA: Tabela que herda os campos de Endereço.<br>
+    
+    POLICIAL: Tabela que armazena as informações relativas ao policial<br>
+    Nome: Campo que armazena o nome completo de cada policial cadastrado no sistema.<br>
+    EMAIL: Campo que armazena o email de contato de cada policial cadastrado no sistema.<br>
+    Delegacia: Campo que armazena a delegacia que cada policial cadastrado no sistema pertence.<br>
+    Usuário: Campo que armazena um nome de usuário único, utilizado como identificador para cada policial cadastrado no sistema.<br>
+    Senha: Campo que armazena uma senha para reconhecimento do usuário.<br>
+    
+    CAPTURA: Tabela que armazena as informações relativas ao som capturado<br>
+    Código Capturado: Campo que atribui um código para o som capturado.<br>
+    Arquivo de Som: Campo que armazena a gravação do audio capturado.<br>
+    Data Inicial: Campo que armazena a data que começou a gravação.<br>
+    Data Final: Campo que armazena a data que terminou a gravação.<br>
+    Hora Inicial: Campo que armazena o hórario que começou a gravação.<br>
+    Hora Final: Campo que armazena o hórario que terminou a gravação.<br>
+    
+    SENSOR: Tabela que armazena as informações relativas ao som<br>
+    Código do sensor: Campo que atribui um código para o sensor cadastrado.<br>
+    Tipo: Campo que armazena o tipo do sensor.<br>
+    Nome: Campo que armazena o nome do sensor.<br>
+      
 
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
@@ -97,132 +142,13 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
         (não serão aceitos modelos que não estejam em conformidade)
 
 ### 7	MODELO FÍSICO<br>
-a) inclusão das instruções de criacão das estruturas DDL 
+        a) inclusão das instruções de criacão das estruturas DDL 
         (criação de tabelas, alterações, etc..)          
         
-CREATE TABLE Endereco (
-    estado varChar(100),
-    cidade varChar(100),
-    bairro varChar(100),
-    compl varChar(100),
-    Nº int,
-    rua varChar(100),
-    cod_end varChar(100) PRIMARY KEY
-);
-
-CREATE TABLE Sensor (
-    cod_sensor varChar(100) PRIMARY KEY,
-    tipo varChar(100),
-    nome varChar(100)
-);
-
-CREATE TABLE Pessoa (
-    nome varChar(100),
-    cpf varChar(100) PRIMARY KEY,
-    rg int,
-    sexo char,
-    idade int,
-    celular varChar(100)
-);
-
-CREATE TABLE Usuário (
-    tipo_sanguineo Varchar(3),
-    numero_emergencial varchar(100),
-    FK_Pessoa_cpf varChar(100) PRIMARY KEY
-);
-
-CREATE TABLE Policial (
-    nome varChar(100),
-    email varChar(100),
-    usuário varChar(100) PRIMARY KEY,
-    senha varChar(100),
-    FK_Delegacia_Codigo varChar(100)
-);
-
-CREATE TABLE Casa (
-    FK_Endereço_cod_end varChar(100),
-    FK_Delegacia_Codigo varChar(100)
-);
-
-CREATE TABLE Delegacia (
-    Telefone varChar(100),
-    Codigo varChar(100) PRIMARY KEY,
-    FK_Endereço_cod_end varChar(100)
-);
-
-CREATE TABLE Captura (
-    codigo_captura varChar(100) PRIMARY KEY,
-    arquivo_som varChar(100),
-    data_ini date,
-    data_fim date,
-    hora_ini time,
-    hora_fim time
-);
-
-CREATE TABLE Possui_Pessoa_Casa (
-    FK_Pessoa_cpf varChar(100)
-);
-
-CREATE TABLE depende (
-    FK_Sensor_cod_sensor varChar(100),
-    FK_Captura_codigo_captura varChar(100)
-);
-
-CREATE TABLE possui_Casa_captura (
-    FK_Captura_codigo_captura varChar(100)
-);
- 
-ALTER TABLE Usuário ADD CONSTRAINT FK_Usuário_1
-    FOREIGN KEY (FK_Pessoa_cpf)
-    REFERENCES Pessoa (cpf)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Policial ADD CONSTRAINT FK_Policial_1
-    FOREIGN KEY (FK_Delegacia_Codigo)
-    REFERENCES Delegacia (Codigo)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_0
-    FOREIGN KEY (FK_Endereço_cod_end)
-    REFERENCES Endereco (cod_end)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_1
-    FOREIGN KEY (FK_Delegacia_Codigo)
-    REFERENCES Delegacia (Codigo)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
-    FOREIGN KEY (FK_Endereço_cod_end)
-    REFERENCES Endereco (cod_end)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Possui_Pessoa_Casa ADD CONSTRAINT FK_Possui_Pessoa_Casa_0
-    FOREIGN KEY (FK_Pessoa_cpf)
-    REFERENCES Pessoa (cpf)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
- 
-ALTER TABLE depende ADD CONSTRAINT FK_depende_0
-    FOREIGN KEY (FK_Sensor_cod_sensor)
-    REFERENCES Sensor (cod_sensor)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
- 
-ALTER TABLE depende ADD CONSTRAINT FK_depende_1
-    FOREIGN KEY (FK_Captura_codigo_captura)
-    REFERENCES Captura (codigo_captura)
-    ON DELETE SET NULL ON UPDATE CASCADE;
- 
-ALTER TABLE possui_Casa_captura ADD CONSTRAINT FK_possui_Casa_captura_0
-    FOREIGN KEY (FK_Captura_codigo_captura)
-    REFERENCES Captura (codigo_captura)
-    ON DELETE SET NULL ON UPDATE CASCADE;
-    
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
         b) formato .SQL
-        
-        
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
@@ -230,32 +156,6 @@ ALTER TABLE possui_Casa_captura ADD CONSTRAINT FK_possui_Casa_captura_0
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
         c) formato .SQL
-        
-        
- insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end ) 
- values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
-	('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
-        ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
-        ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
-        ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
-        ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
-        ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
-        ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
-        ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
-        ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
-										
-										
-insert into sensor (cod_sensor, tipo, nome) values('123-456-789', 'Microfone Mega', 'tapa023.wav'),
-						  ('234-567-897', 'Sensor Sonoro Ky-038', 'tapa077.wav'),
-                                                  ('435-769-142',	'Microfone Mega', 'soco002.wav'),
-                                                  ('268-916-031', 'Microfone Mega', 'baterPorta015.wav'),
-                                                  ('469-911-270',	'Sensor Sonoro Ky-038', 'xingamentoVM008.wav'),
-                                                  ('927-881-236',	'Sensor Sonoro Ky-038', 'xingamentoVF008.wav'),
-                                                  ('871-903-054',	'Microfone Mega', 'coisaQeubrando007.wav'),
-                                                  ('673-189-037',	'Sensor Sonoro Ky-033', 'soco038.wav'),
-                                                  ('824-517-900',	'Microfone Mega', 'baterPorta100.wav'),
-                                                  ('735-357-573',	'Sensor Sonoro Ky-035', 'tapa056.wav');	
-						  
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
         (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
@@ -267,7 +167,10 @@ insert into sensor (cod_sensor, tipo, nome) values('123-456-789', 'Microfone Meg
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
+
+
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
