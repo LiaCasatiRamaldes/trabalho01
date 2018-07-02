@@ -97,13 +97,132 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
         (não serão aceitos modelos que não estejam em conformidade)
 
 ### 7	MODELO FÍSICO<br>
-        a) inclusão das instruções de criacão das estruturas DDL 
+a) inclusão das instruções de criacão das estruturas DDL 
         (criação de tabelas, alterações, etc..)          
         
+CREATE TABLE Endereco (
+    estado varChar(100),
+    cidade varChar(100),
+    bairro varChar(100),
+    compl varChar(100),
+    Nº int,
+    rua varChar(100),
+    cod_end varChar(100) PRIMARY KEY
+);
+
+CREATE TABLE Sensor (
+    cod_sensor varChar(100) PRIMARY KEY,
+    tipo varChar(100),
+    nome varChar(100)
+);
+
+CREATE TABLE Pessoa (
+    nome varChar(100),
+    cpf varChar(100) PRIMARY KEY,
+    rg int,
+    sexo char,
+    idade int,
+    celular varChar(100)
+);
+
+CREATE TABLE Usuário (
+    tipo_sanguineo Varchar(3),
+    numero_emergencial varchar(100),
+    FK_Pessoa_cpf varChar(100) PRIMARY KEY
+);
+
+CREATE TABLE Policial (
+    nome varChar(100),
+    email varChar(100),
+    usuário varChar(100) PRIMARY KEY,
+    senha varChar(100),
+    FK_Delegacia_Codigo varChar(100)
+);
+
+CREATE TABLE Casa (
+    FK_Endereço_cod_end varChar(100),
+    FK_Delegacia_Codigo varChar(100)
+);
+
+CREATE TABLE Delegacia (
+    Telefone varChar(100),
+    Codigo varChar(100) PRIMARY KEY,
+    FK_Endereço_cod_end varChar(100)
+);
+
+CREATE TABLE Captura (
+    codigo_captura varChar(100) PRIMARY KEY,
+    arquivo_som varChar(100),
+    data_ini date,
+    data_fim date,
+    hora_ini time,
+    hora_fim time
+);
+
+CREATE TABLE Possui_Pessoa_Casa (
+    FK_Pessoa_cpf varChar(100)
+);
+
+CREATE TABLE depende (
+    FK_Sensor_cod_sensor varChar(100),
+    FK_Captura_codigo_captura varChar(100)
+);
+
+CREATE TABLE possui_Casa_captura (
+    FK_Captura_codigo_captura varChar(100)
+);
+ 
+ALTER TABLE Usuário ADD CONSTRAINT FK_Usuário_1
+    FOREIGN KEY (FK_Pessoa_cpf)
+    REFERENCES Pessoa (cpf)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Policial ADD CONSTRAINT FK_Policial_1
+    FOREIGN KEY (FK_Delegacia_Codigo)
+    REFERENCES Delegacia (Codigo)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_0
+    FOREIGN KEY (FK_Endereço_cod_end)
+    REFERENCES Endereco (cod_end)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_1
+    FOREIGN KEY (FK_Delegacia_Codigo)
+    REFERENCES Delegacia (Codigo)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
+    FOREIGN KEY (FK_Endereço_cod_end)
+    REFERENCES Endereco (cod_end)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+ 
+ALTER TABLE Possui_Pessoa_Casa ADD CONSTRAINT FK_Possui_Pessoa_Casa_0
+    FOREIGN KEY (FK_Pessoa_cpf)
+    REFERENCES Pessoa (cpf)
+    ON DELETE RESTRICT ON UPDATE RESTRICT;
+ 
+ALTER TABLE depende ADD CONSTRAINT FK_depende_0
+    FOREIGN KEY (FK_Sensor_cod_sensor)
+    REFERENCES Sensor (cod_sensor)
+    ON DELETE RESTRICT ON UPDATE RESTRICT;
+ 
+ALTER TABLE depende ADD CONSTRAINT FK_depende_1
+    FOREIGN KEY (FK_Captura_codigo_captura)
+    REFERENCES Captura (codigo_captura)
+    ON DELETE SET NULL ON UPDATE CASCADE;
+ 
+ALTER TABLE possui_Casa_captura ADD CONSTRAINT FK_possui_Casa_captura_0
+    FOREIGN KEY (FK_Captura_codigo_captura)
+    REFERENCES Captura (codigo_captura)
+    ON DELETE SET NULL ON UPDATE CASCADE;
+    
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
         b) formato .SQL
+        
+        
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
