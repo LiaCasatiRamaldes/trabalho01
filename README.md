@@ -230,6 +230,18 @@ ALTER TABLE possui_Casa_captura ADD CONSTRAINT FK_possui_Casa_captura_0
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
         c) formato .SQL
+        
+        
+ insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end ) values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
+																				('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
+                                                                                ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
+                                                                                ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
+                                                                                ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
+                                                                                ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
+                                                                                ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
+                                                                                ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
+                                                                                ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
+                                                                                ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
         (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
