@@ -414,16 +414,27 @@ values ('123-456-789', '1230'),
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
     
 select * from Sensor where tipo = 'Microfone Mega';
+
 select * from Usuário where tipo_sanguineo = 'A+' or tipo_sanguineo = 'O-';
+
 select * from Pessoa where sexo = 'F' and idade = '49';
+
 select * from Pessoa where sexo = 'M' and idade < 40;
+
 select * from Pessoa where nome = 'Rosana Gabriel' or nome = 'Marina Valter';
+
 select nome from Pessoa where nome is not null;
+
 select nome_completo, idade, (idade*10) as idade_vezes_dez from Pessoa;
+
 select nome_completo, idade, (idade-12) as idade_menos_doze from Pessoa where sexo = 'M' ;
+
 select nome_completo, rg, (rg/10) as rg_dividido_por_dez from Pessoa;
+
 alter table Pessoa rename nome to nome_completo;
+
 alter table Pessoa rename celular to telefone_móvel;
+
 alter table Usuário rename numero_emergencial to nu_emergencial;
    
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
@@ -431,15 +442,25 @@ alter table Usuário rename numero_emergencial to nu_emergencial;
     b) Criar uma consulta para cada tipo de função data apresentada.
 	
 select nome_completo, cpf from Pessoa where nome_completo ilike '%o%';
+
 select nome_completo from Pessoa where nome_completo like 'J%';
+
 select * from Endereço where cidade like 'S%';
+
 select * from Endereço where bairro ilike '%l%';
+
 select * from Endereço where compl like 'Ed.%';
+
 select now();
+
 select current_date;
+
 select current_time;
+
 select age(current_date, ('2002-12-26'));
+
 select date_part('year',age(current_date, ('2002-12-26')));
+
 extract ('year' from ('2002-12-26'));
 
 
