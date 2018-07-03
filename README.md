@@ -466,7 +466,17 @@ extract ('year' from ('2002-12-26'));
 
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
 
+update Pessoa set nome_completo = 'Maria Penhores' where cpf = '196.936.726-09';
 
+delete from Pessoa where nome_completo = 'Cristiane Louve';
+
+update Delegacia set telefone = '(31)9453-5218' where codigo = '1';
+
+delete from Delegacia where codigo = '10';
+
+update Policial set email = 'pauloCR@gmail.com' where nome = 'Paulo Correia';
+
+delete from Policial where fk_delegacia_codigo = '9';
 
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
         a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
