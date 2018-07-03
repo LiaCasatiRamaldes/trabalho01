@@ -396,23 +396,55 @@ values ('123-456-789', '1230'),
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
-![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0003.jpg)
-![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0006.jpg)
-![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/IMG-20180702-WA0007.jpg)
+    Tabela Usuário<br>
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img1.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img2.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img3.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img4.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img5.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img6.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img7.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img8.png)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img9.png)
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
-
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+    
+select * from Sensor where tipo = 'Microfone Mega';
+select * from Usuário where tipo_sanguineo = 'A+' or tipo_sanguineo = 'O-';
+select * from Pessoa where sexo = 'F' and idade = '49';
+select * from Pessoa where sexo = 'M' and idade < 40;
+select * from Pessoa where nome = 'Rosana Gabriel' or nome = 'Marina Valter';
+select nome from Pessoa where nome is not null;
+select nome_completo, idade, (idade*10) as idade_vezes_dez from Pessoa;
+select nome_completo, idade, (idade-12) as idade_menos_doze from Pessoa where sexo = 'M' ;
+select nome_completo, rg, (rg/10) as rg_dividido_por_dez from Pessoa;
+alter table Pessoa rename nome to nome_completo;
+alter table Pessoa rename celular to telefone_móvel;
+alter table Usuário rename numero_emergencial to nu_emergencial;
+   
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
     b) Criar uma consulta para cada tipo de função data apresentada.
+	
+select nome_completo, cpf from Pessoa where nome_completo ilike '%o%';
+select nome_completo from Pessoa where nome_completo like 'J%';
+select * from Endereço where cidade like 'S%';
+select * from Endereço where bairro ilike '%l%';
+select * from Endereço where compl like 'Ed.%';
+select now();
+select current_date;
+select current_time;
+select age(current_date, ('2002-12-26'));
+select date_part('year',age(current_date, ('2002-12-26')));
+extract ('year' from ('2002-12-26'));
 
 
-    
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
+
 
 
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
