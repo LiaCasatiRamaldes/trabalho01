@@ -146,7 +146,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
         (criação de tabelas, alterações, etc..)
         
         
-CREATE TABLE Endereço (
+CREATE TABLE Endereco (
     estado varChar(100),
     cidade varChar(100),
     bairro varChar(100),
@@ -171,7 +171,7 @@ CREATE TABLE Pessoa (
     celular varChar(100)
 );
 
-CREATE TABLE Usuário (
+CREATE TABLE Usuario (
     tipo_sanguineo Varchar(3),
     numero_emergencial varchar(100),
     FK_Pessoa_cpf varChar(100) PRIMARY KEY
@@ -205,20 +205,12 @@ CREATE TABLE Captura (
     hora_fim time
 );
 
-CREATE TABLE Possui (
-    FK_Pessoa_cpf varChar(100)
-);
-
 CREATE TABLE depende (
     FK_Sensor_cod_sensor varChar(100),
     FK_Captura_codigo_captura varChar(100)
 );
-
-CREATE TABLE possui (
-    FK_Captura_codigo_captura varChar(100)
-);
  
-ALTER TABLE Usuário ADD CONSTRAINT FK_Usuário_1
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuário_1
     FOREIGN KEY (FK_Pessoa_cpf)
     REFERENCES Pessoa (cpf)
     ON DELETE CASCADE ON UPDATE CASCADE;
@@ -243,22 +235,12 @@ ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
     REFERENCES Endereço (cod_end)
     ON DELETE CASCADE ON UPDATE CASCADE;
  
-ALTER TABLE Possui ADD CONSTRAINT FK_Possui_0
-    FOREIGN KEY (FK_Pessoa_cpf)
-    REFERENCES Pessoa (cpf)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
- 
 ALTER TABLE depende ADD CONSTRAINT FK_depende_0
     FOREIGN KEY (FK_Sensor_cod_sensor)
     REFERENCES Sensor (cod_sensor)
     ON DELETE RESTRICT ON UPDATE RESTRICT;
  
 ALTER TABLE depende ADD CONSTRAINT FK_depende_1
-    FOREIGN KEY (FK_Captura_codigo_captura)
-    REFERENCES Captura (codigo_captura)
-    ON DELETE SET NULL ON UPDATE CASCADE;
- 
-ALTER TABLE possui ADD CONSTRAINT FK_possui_0
     FOREIGN KEY (FK_Captura_codigo_captura)
     REFERENCES Captura (codigo_captura)
     ON DELETE SET NULL ON UPDATE CASCADE;
