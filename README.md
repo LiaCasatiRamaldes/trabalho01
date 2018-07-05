@@ -404,9 +404,10 @@ select * from Pessoa;
 <br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img2.png)
 <br>
-select * from Delegacia;<br>
+select * from Delegacia;
 <br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img3.png)
+<br>
 select * from Endereço;
 <br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img4.png)
