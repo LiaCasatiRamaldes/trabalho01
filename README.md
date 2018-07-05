@@ -396,23 +396,23 @@ values ('123-456-789', '1230'),
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
-select * from Usuario;
+select * from Usuario;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img1.png)
-select * from Pessoa;
+select * from Pessoa;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img2.png)
-select * from Delegacia;
+select * from Delegacia;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img3.png)
-select * from Endereço;
+select * from Endereço;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img4.png)
-select * from Sensor;
+select * from Sensor;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img5.png)
-select * from Policial
+select * from Policial;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img6.png)
-select * from Casa;
+select * from Casa;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img7.png)
-select * from Captura;
+select * from Captura;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img8.png)
-select * from Depende;
+select * from Depende;<br>
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img9.png)
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
