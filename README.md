@@ -75,20 +75,19 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     [Grupo02]: [Nomes dos que participaram na avaliação]
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 #### 5.2 DECISÕES DE PROJETO
-   
-   Endereço: Em nosso projeto optamos por uma tabela endereço, para evitar que precisasse fazer os mesmos campos em tabelas diferentes.
-   <br>
-   Pessoa: Em nosso projeto optamos por uma tabela pessoa, para armazenar as informaçôes referentes aos usuários cadastrados, para futuras consultas.
-   <br>
-   Usuário: Em nosso projeto optamos por uma tabela usuário, para armazenar as outras informaçôes referentes aos usuários cadastrados, para futuras consultas. 
-   <br>
-   Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica). 
-   <br>
-   Policial: Em nosso projeto optamos por uma tabela policial, para armazenar as informaçôes referentes aos policiais cadastrados, para futuras consultas.
-   <br>
-   Sensor: Em nosso projeto optamos por uma tabela sensor, para armazenar as informaçôes referentes aos sensores cadastrados, para futuras consultas.
-   <br>
-   Captura: Em nosso projeto optamos por uma tabela captura, para armazenar as informaçôes referentes aos audios capturados, para futuras consultas.
+   	Endereço: Em nosso projeto optamos por uma tabela endereço, para evitar que precisasse fazer os mesmos campos em tabelas diferentes.
+   	<br>
+  	 Pessoa: Em nosso projeto optamos por uma tabela pessoa, para armazenar as informaçôes referentes aos usuários cadastrados, para futuras consultas.
+   	<br>
+	Usuário: Em nosso projeto optamos por uma tabela usuário, para armazenar as outras informaçôes referentes aos usuários cadastrados, para futuras consultas. 
+   	<br>
+   	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica). 
+   	<br>
+   	Policial: Em nosso projeto optamos por uma tabela policial, para armazenar as informaçôes referentes aos policiais cadastrados, para futuras consultas.
+   	<br>
+   	Sensor: Em nosso projeto optamos por uma tabela sensor, para armazenar as informaçôes referentes aos sensores cadastrados, para futuras consultas.
+   	<br>
+   	Captura: Em nosso projeto optamos por uma tabela captura, para armazenar as informaçôes referentes aos audios capturados, para futuras consultas.
    
     
 #### 5.3 DESCRIÇÃO DOS DADOS 
