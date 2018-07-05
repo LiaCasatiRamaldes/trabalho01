@@ -375,6 +375,8 @@ values ('123-456-789', '1230'),
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
         c) formato .SQL
+	https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/arquivos/Codigo%2BdropSQL_VD.docx
+
 
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
