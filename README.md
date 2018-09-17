@@ -5,6 +5,7 @@ Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
+Gabriela Neves: gabrielasantosneves11@gmail.com <br>
 Lia Casati Ramaldes:liac.ramaldes@gmail.com <br>
 Thamiris Moreira:thamirismais@gmail.com <br>
 ...
