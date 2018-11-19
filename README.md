@@ -155,105 +155,315 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
         (criação de tabelas, alterações, etc..)
         
         
-CREATE TABLE Endereco (
-    estado varChar(100),
-    cidade varChar(100),
-    bairro varChar(100),
-    compl varChar(100),
-    Nº int,
-    rua varChar(100),
-    cod_end varChar(100) PRIMARY KEY
+/* modelo_logico_VD(novo): */
+
+CREATE TABLE Endereço (
+    numero int,
+    cod_end Serial PRIMARY KEY,
+    fk_complemento_cod_complemento Serial
 );
 
 CREATE TABLE Sensor (
-    cod_sensor varChar(100) PRIMARY KEY,
+    cod_sensor Serial PRIMARY KEY,
     tipo varChar(100),
     nome varChar(100)
 );
 
 CREATE TABLE Pessoa (
     nome varChar(100),
-    cpf varChar(100) PRIMARY KEY,
-    rg int,
-    sexo char,
-    idade int,
-    celular varChar(100)
-);
-
-CREATE TABLE Usuario (
-    tipo_sanguineo Varchar(3),
-    numero_emergencial varchar(100),
-    FK_Pessoa_cpf varChar(100) PRIMARY KEY
-);
-
-CREATE TABLE Policial (
-    nome varChar(100),
-    email varChar(100),
-    usuário varChar(100) PRIMARY KEY,
-    senha varChar(100),
-    FK_Delegacia_Codigo varChar(100)
-);
-
-CREATE TABLE Casa (
-    FK_Endereço_cod_end varChar(100),
-    FK_Delegacia_Codigo varChar(100)
+    cod_pessoa Serial PRIMARY KEY,
+    fk_Sexo_cod_sexo Serial
 );
 
 CREATE TABLE Delegacia (
-    Telefone varChar(100),
-    Codigo varChar(100) PRIMARY KEY,
-    FK_Endereço_cod_end varChar(100)
+    cod_delegacia Serial PRIMARY KEY,
+    fk_Endereço_cod_end Serial
 );
 
 CREATE TABLE Captura (
-    codigo_captura varChar(100) PRIMARY KEY,
-    arquivo_som varChar(100),
+    cod_captura Serial PRIMARY KEY,
     data_ini date,
     data_fim date,
     hora_ini time,
-    hora_fim time
+    hora_fim time,
+    arquivo varChar(100),
+    fk_Sensor_cod_sensor Serial,
+    fk_tipo_arquivo_cod_arquivo Serial
 );
 
-CREATE TABLE depende (
-    FK_Sensor_cod_sensor varChar(100),
-    FK_Captura_codigo_captura varChar(100)
+CREATE TABLE Casa (
+    cod_casa Serial PRIMARY KEY,
+    fk_Endereço_cod_end Serial,
+    fk_Delegacia_cod_delegacia Serial
+);
+
+CREATE TABLE Sexo (
+    cod_sexo Serial PRIMARY KEY,
+    tipo varChar(100)
+);
+
+CREATE TABLE Sangue (
+    cod_Sanguineo Serial PRIMARY KEY,
+    tipo_sanguineo varChar(100)
+);
+
+CREATE TABLE Bairro (
+    cod_bairro Serial PRIMARY KEY,
+    nome_bairro varChar(100),
+    fk_Endereço_cod_end Serial,
+    fk_Cidade_cod_cidade Serial
+);
+
+CREATE TABLE Estado (
+    cod_estado Serial PRIMARY KEY,
+    nome_estado varChar(100)
+);
+
+CREATE TABLE Cidade (
+    cod_cidade Serial PRIMARY KEY,
+    nome_cidade varChar(100),
+    fk_Estado_cod_estado Serial
+);
+
+CREATE TABLE Contato (
+    cod_contato Serial PRIMARY KEY,
+    descricao varChar(100),
+    fk_Tipo_contato_cod_tipo Serial
+);
+
+CREATE TABLE Tipo_contato (
+    desc_tipo varChar(100),
+    cod_tipo Serial PRIMARY KEY
+);
+
+CREATE TABLE Cadastrados (
+    cpf varChar(100),
+    rg varChar(100),
+    fk_Pessoa_cod_pessoa Serial PRIMARY KEY
+);
+
+CREATE TABLE Policial (
+    senha varChar(100),
+    fk_Pessoa_cod_pessoa Serial PRIMARY KEY,
+    fk_Delegacia_cod_delegacia Serial
+);
+
+CREATE TABLE Logradouro (
+    cod Serial PRIMARY KEY,
+    desc varChar(100),
+    tipo varChar(100)
+);
+
+CREATE TABLE complemento (
+    cod_complemento Serial PRIMARY KEY,
+    desc_complemento varChar(100)
+);
+
+CREATE TABLE som (
+    cod_som Serial PRIMARY KEY,
+    local_som varChar(100),
+    tipo_som varChar(100)
+);
+
+CREATE TABLE Usuario (
+    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial PRIMARY KEY,
+    fk_Sangue_cod_Sanguineo Serial
+);
+
+CREATE TABLE Parceiro (
+    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial PRIMARY KEY,
+    fk_Relacao_cod_relacao Serial
+);
+
+CREATE TABLE Relacao (
+    cod_relacao Serial PRIMARY KEY,
+    tipo_relacao varChar(100)
+);
+
+CREATE TABLE tipo_arquivo (
+    cod_arquivo Serial PRIMARY KEY,
+    tipo_arquivo varChar(100)
+);
+
+CREATE TABLE possui_cadastrados_casa (
+    fk_Casa_cod_casa Serial,
+    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial
+);
+
+CREATE TABLE possui_contato_delegacia (
+    fk_Contato_cod_contato Serial,
+    fk_Delegacia_cod_delegacia Serial
+);
+
+CREATE TABLE possui_cadastrados_contato (
+    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial,
+    fk_Contato_cod_contato Serial
+);
+
+CREATE TABLE possui_end_logradouro (
+    fk_Endereço_cod_end Serial,
+    fk_Logradouro_cod Serial
+);
+
+CREATE TABLE possui_capt_som (
+    fk_som_cod_som Serial,
+    fk_Captura_cod_captura Serial
+);
+
+CREATE TABLE possui_casa_captura (
+    fk_Casa_cod_casa Serial,
+    fk_Captura_cod_captura Serial
 );
  
-ALTER TABLE Usuario ADD CONSTRAINT FK_Usuário_1
-    FOREIGN KEY (FK_Pessoa_cpf)
-    REFERENCES Pessoa (cpf)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Endereço ADD CONSTRAINT FK_Endereço_2
+    FOREIGN KEY (fk_complemento_cod_complemento)
+    REFERENCES complemento (cod_complemento)
+    ON DELETE CASCADE;
  
-ALTER TABLE Policial ADD CONSTRAINT FK_Policial_1
-    FOREIGN KEY (FK_Delegacia_Codigo)
-    REFERENCES Delegacia (Codigo)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE Pessoa ADD CONSTRAINT FK_Pessoa_2
+    FOREIGN KEY (fk_Sexo_cod_sexo)
+    REFERENCES Sexo (cod_sexo)
+    ON DELETE RESTRICT;
  
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_0
-    FOREIGN KEY (FK_Endereço_cod_end)
+ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_2
+    FOREIGN KEY (fk_Endereço_cod_end)
     REFERENCES Endereço (cod_end)
-    ON DELETE CASCADE ON UPDATE CASCADE;
+    ON DELETE CASCADE;
  
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_1
-    FOREIGN KEY (FK_Delegacia_Codigo)
-    REFERENCES Delegacia (Codigo)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
-    FOREIGN KEY (FK_Endereço_cod_end)
-    REFERENCES Endereço (cod_end)
-    ON DELETE CASCADE ON UPDATE CASCADE;
- 
-ALTER TABLE depende ADD CONSTRAINT FK_depende_0
-    FOREIGN KEY (FK_Sensor_cod_sensor)
+ALTER TABLE Captura ADD CONSTRAINT FK_Captura_2
+    FOREIGN KEY (fk_Sensor_cod_sensor)
     REFERENCES Sensor (cod_sensor)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
+    ON DELETE CASCADE;
  
-ALTER TABLE depende ADD CONSTRAINT FK_depende_1
-    FOREIGN KEY (FK_Captura_codigo_captura)
-    REFERENCES Captura (codigo_captura)
-    ON DELETE SET NULL ON UPDATE CASCADE;
-        
+ALTER TABLE Captura ADD CONSTRAINT FK_Captura_3
+    FOREIGN KEY (fk_tipo_arquivo_cod_arquivo)
+    REFERENCES tipo_arquivo (cod_arquivo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_2
+    FOREIGN KEY (fk_Endereço_cod_end)
+    REFERENCES Endereço (cod_end)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_3
+    FOREIGN KEY (fk_Delegacia_cod_delegacia)
+    REFERENCES Delegacia (cod_delegacia)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_2
+    FOREIGN KEY (fk_Endereço_cod_end)
+    REFERENCES Endereço (cod_end)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_3
+    FOREIGN KEY (fk_Cidade_cod_cidade)
+    REFERENCES Cidade (cod_cidade)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Cidade ADD CONSTRAINT FK_Cidade_2
+    FOREIGN KEY (fk_Estado_cod_estado)
+    REFERENCES Estado (cod_estado)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Contato ADD CONSTRAINT FK_Contato_2
+    FOREIGN KEY (fk_Tipo_contato_cod_tipo)
+    REFERENCES Tipo_contato (cod_tipo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Cadastrados ADD CONSTRAINT FK_Cadastrados_2
+    FOREIGN KEY (fk_Pessoa_cod_pessoa)
+    REFERENCES Pessoa (cod_pessoa)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Policial ADD CONSTRAINT FK_Policial_2
+    FOREIGN KEY (fk_Pessoa_cod_pessoa)
+    REFERENCES Pessoa (cod_pessoa)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Policial ADD CONSTRAINT FK_Policial_3
+    FOREIGN KEY (fk_Delegacia_cod_delegacia)
+    REFERENCES Delegacia (cod_delegacia)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_2
+    FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
+    REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_3
+    FOREIGN KEY (fk_Sangue_cod_Sanguineo)
+    REFERENCES Sangue (cod_Sanguineo)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_2
+    FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
+    REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_3
+    FOREIGN KEY (fk_Relacao_cod_relacao)
+    REFERENCES Relacao (cod_relacao)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_1
+    FOREIGN KEY (fk_Casa_cod_casa)
+    REFERENCES Casa (cod_casa)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_2
+    FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
+    REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_1
+    FOREIGN KEY (fk_Contato_cod_contato)
+    REFERENCES Contato (cod_contato)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_2
+    FOREIGN KEY (fk_Delegacia_cod_delegacia)
+    REFERENCES Delegacia (cod_delegacia)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_cadastrados_contato ADD CONSTRAINT FK_possui_cadastrados_contato_1
+    FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
+    REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_cadastrados_contato ADD CONSTRAINT FK_possui_cadastrados_contato_2
+    FOREIGN KEY (fk_Contato_cod_contato)
+    REFERENCES Contato (cod_contato)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_end_logradouro ADD CONSTRAINT FK_possui_end_logradouro_1
+    FOREIGN KEY (fk_Endereço_cod_end)
+    REFERENCES Endereço (cod_end)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_end_logradouro ADD CONSTRAINT FK_possui_end_logradouro_2
+    FOREIGN KEY (fk_Logradouro_cod)
+    REFERENCES Logradouro (cod)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_1
+    FOREIGN KEY (fk_som_cod_som)
+    REFERENCES som (cod_som)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_2
+    FOREIGN KEY (fk_Captura_cod_captura)
+    REFERENCES Captura (cod_captura)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_1
+    FOREIGN KEY (fk_Casa_cod_casa)
+    REFERENCES Casa (cod_casa)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_2
+    FOREIGN KEY (fk_Captura_cod_captura)
+    REFERENCES Captura (cod_captura)
+    ON DELETE SET NULL;        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
