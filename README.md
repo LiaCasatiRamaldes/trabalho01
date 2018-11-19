@@ -250,7 +250,7 @@ CREATE TABLE Policial (
 
 CREATE TABLE Logradouro (
     cod Serial PRIMARY KEY,
-    desc varChar(100),
+    descricao varChar(100),
     tipo varChar(100)
 );
 
