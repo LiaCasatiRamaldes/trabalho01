@@ -157,7 +157,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
         
 /* modelo_logico_VD(novo): */
 
-CREATE TABLE Endereço (
+CREATE TABLE Endereco (
     numero int,
     cod_end Serial PRIMARY KEY,
     fk_complemento_cod_complemento Serial
@@ -177,7 +177,7 @@ CREATE TABLE Pessoa (
 
 CREATE TABLE Delegacia (
     cod_delegacia Serial PRIMARY KEY,
-    fk_Endereço_cod_end Serial
+    fk_Endereco_cod_end Serial
 );
 
 CREATE TABLE Captura (
@@ -193,7 +193,7 @@ CREATE TABLE Captura (
 
 CREATE TABLE Casa (
     cod_casa Serial PRIMARY KEY,
-    fk_Endereço_cod_end Serial,
+    fk_Endereco_cod_end Serial,
     fk_Delegacia_cod_delegacia Serial
 );
 
@@ -210,7 +210,7 @@ CREATE TABLE Sangue (
 CREATE TABLE Bairro (
     cod_bairro Serial PRIMARY KEY,
     nome_bairro varChar(100),
-    fk_Endereço_cod_end Serial,
+    fk_Endereco_cod_end Serial,
     fk_Cidade_cod_cidade Serial
 );
 
@@ -296,12 +296,12 @@ CREATE TABLE possui_contato_delegacia (
 );
 
 CREATE TABLE possui_cadastrados_contato (
-    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial,
-    fk_Contato_cod_contato Serial
+    fk_Contato_cod_contato Serial,
+    fk_Cadastrados_fk_Pessoa_cod_pessoa Serial
 );
 
 CREATE TABLE possui_end_logradouro (
-    fk_Endereço_cod_end Serial,
+    fk_Endereco_cod_end Serial,
     fk_Logradouro_cod Serial
 );
 
@@ -315,270 +315,523 @@ CREATE TABLE possui_casa_captura (
     fk_Captura_cod_captura Serial
 );
  
-ALTER TABLE Endereço ADD CONSTRAINT FK_Endereço_2
+ALTER TABLE Endereco ADD CONSTRAINT FK_Endereco_1
     FOREIGN KEY (fk_complemento_cod_complemento)
     REFERENCES complemento (cod_complemento)
     ON DELETE CASCADE;
  
-ALTER TABLE Pessoa ADD CONSTRAINT FK_Pessoa_2
+ALTER TABLE Pessoa ADD CONSTRAINT FK_Pessoa_1
     FOREIGN KEY (fk_Sexo_cod_sexo)
     REFERENCES Sexo (cod_sexo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_2
-    FOREIGN KEY (fk_Endereço_cod_end)
-    REFERENCES Endereço (cod_end)
+ALTER TABLE Delegacia ADD CONSTRAINT FK_Delegacia_1
+    FOREIGN KEY (fk_Endereco_cod_end)
+    REFERENCES Endereco (cod_end)
     ON DELETE CASCADE;
  
-ALTER TABLE Captura ADD CONSTRAINT FK_Captura_2
+ALTER TABLE Captura ADD CONSTRAINT FK_Captura_1
     FOREIGN KEY (fk_Sensor_cod_sensor)
     REFERENCES Sensor (cod_sensor)
     ON DELETE CASCADE;
  
-ALTER TABLE Captura ADD CONSTRAINT FK_Captura_3
+ALTER TABLE Captura ADD CONSTRAINT FK_Captura_2
     FOREIGN KEY (fk_tipo_arquivo_cod_arquivo)
     REFERENCES tipo_arquivo (cod_arquivo)
     ON DELETE CASCADE;
  
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_2
-    FOREIGN KEY (fk_Endereço_cod_end)
-    REFERENCES Endereço (cod_end)
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_1
+    FOREIGN KEY (fk_Endereco_cod_end)
+    REFERENCES Endereco (cod_end)
     ON DELETE CASCADE;
  
-ALTER TABLE Casa ADD CONSTRAINT FK_Casa_3
+ALTER TABLE Casa ADD CONSTRAINT FK_Casa_2
     FOREIGN KEY (fk_Delegacia_cod_delegacia)
     REFERENCES Delegacia (cod_delegacia)
     ON DELETE RESTRICT;
  
-ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_2
-    FOREIGN KEY (fk_Endereço_cod_end)
-    REFERENCES Endereço (cod_end)
+ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_1
+    FOREIGN KEY (fk_Endereco_cod_end)
+    REFERENCES Endereco (cod_end)
     ON DELETE CASCADE;
  
-ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_3
+ALTER TABLE Bairro ADD CONSTRAINT FK_Bairro_2
     FOREIGN KEY (fk_Cidade_cod_cidade)
     REFERENCES Cidade (cod_cidade)
     ON DELETE RESTRICT;
  
-ALTER TABLE Cidade ADD CONSTRAINT FK_Cidade_2
+ALTER TABLE Cidade ADD CONSTRAINT FK_Cidade_1
     FOREIGN KEY (fk_Estado_cod_estado)
     REFERENCES Estado (cod_estado)
     ON DELETE RESTRICT;
  
-ALTER TABLE Contato ADD CONSTRAINT FK_Contato_2
+ALTER TABLE Contato ADD CONSTRAINT FK_Contato_1
     FOREIGN KEY (fk_Tipo_contato_cod_tipo)
     REFERENCES Tipo_contato (cod_tipo)
     ON DELETE CASCADE;
  
-ALTER TABLE Cadastrados ADD CONSTRAINT FK_Cadastrados_2
+ALTER TABLE Cadastrados ADD CONSTRAINT FK_Cadastrados_1
+    FOREIGN KEY (fk_Pessoa_cod_pessoa)
+    REFERENCES Pessoa (cod_pessoa)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Policial ADD CONSTRAINT FK_Policial_1
     FOREIGN KEY (fk_Pessoa_cod_pessoa)
     REFERENCES Pessoa (cod_pessoa)
     ON DELETE CASCADE;
  
 ALTER TABLE Policial ADD CONSTRAINT FK_Policial_2
-    FOREIGN KEY (fk_Pessoa_cod_pessoa)
-    REFERENCES Pessoa (cod_pessoa)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Policial ADD CONSTRAINT FK_Policial_3
     FOREIGN KEY (fk_Delegacia_cod_delegacia)
     REFERENCES Delegacia (cod_delegacia)
     ON DELETE RESTRICT;
  
-ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_2
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_1
     FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
     REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
     ON DELETE CASCADE;
  
-ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_3
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_2
     FOREIGN KEY (fk_Sangue_cod_Sanguineo)
     REFERENCES Sangue (cod_Sanguineo)
     ON DELETE CASCADE;
  
-ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_2
+ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_1
     FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
     REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
     ON DELETE CASCADE;
  
-ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_3
+ALTER TABLE Parceiro ADD CONSTRAINT FK_Parceiro_2
     FOREIGN KEY (fk_Relacao_cod_relacao)
     REFERENCES Relacao (cod_relacao)
     ON DELETE CASCADE;
  
-ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_1
+ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_0
     FOREIGN KEY (fk_Casa_cod_casa)
     REFERENCES Casa (cod_casa)
     ON DELETE RESTRICT;
  
-ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_2
+ALTER TABLE possui_cadastrados_casa ADD CONSTRAINT FK_possui_cadastrados_casa_1
     FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
     REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
     ON DELETE RESTRICT;
  
-ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_1
+ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_0
     FOREIGN KEY (fk_Contato_cod_contato)
     REFERENCES Contato (cod_contato)
     ON DELETE RESTRICT;
  
-ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_2
+ALTER TABLE possui_contato_delegacia ADD CONSTRAINT FK_possui_contato_delegacia_1
     FOREIGN KEY (fk_Delegacia_cod_delegacia)
     REFERENCES Delegacia (cod_delegacia)
     ON DELETE SET NULL;
+ 
+ALTER TABLE possui_cadastrados_contato ADD CONSTRAINT FK_possui_cadastrados_contato_0
+    FOREIGN KEY (fk_Contato_cod_contato)
+    REFERENCES Contato (cod_contato)
+    ON DELETE RESTRICT;
  
 ALTER TABLE possui_cadastrados_contato ADD CONSTRAINT FK_possui_cadastrados_contato_1
     FOREIGN KEY (fk_Cadastrados_fk_Pessoa_cod_pessoa)
     REFERENCES Cadastrados (fk_Pessoa_cod_pessoa)
     ON DELETE SET NULL;
  
-ALTER TABLE possui_cadastrados_contato ADD CONSTRAINT FK_possui_cadastrados_contato_2
-    FOREIGN KEY (fk_Contato_cod_contato)
-    REFERENCES Contato (cod_contato)
+ALTER TABLE possui_end_logradouro ADD CONSTRAINT FK_possui_end_logradouro_0
+    FOREIGN KEY (fk_Endereco_cod_end)
+    REFERENCES Endereco (cod_end)
     ON DELETE SET NULL;
  
 ALTER TABLE possui_end_logradouro ADD CONSTRAINT FK_possui_end_logradouro_1
-    FOREIGN KEY (fk_Endereço_cod_end)
-    REFERENCES Endereço (cod_end)
-    ON DELETE SET NULL;
- 
-ALTER TABLE possui_end_logradouro ADD CONSTRAINT FK_possui_end_logradouro_2
     FOREIGN KEY (fk_Logradouro_cod)
     REFERENCES Logradouro (cod)
     ON DELETE SET NULL;
  
-ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_1
+ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_0
     FOREIGN KEY (fk_som_cod_som)
     REFERENCES som (cod_som)
     ON DELETE RESTRICT;
  
-ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_2
+ALTER TABLE possui_capt_som ADD CONSTRAINT FK_possui_capt_som_1
     FOREIGN KEY (fk_Captura_cod_captura)
     REFERENCES Captura (cod_captura)
     ON DELETE SET NULL;
  
-ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_1
+ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_0
     FOREIGN KEY (fk_Casa_cod_casa)
     REFERENCES Casa (cod_casa)
     ON DELETE RESTRICT;
  
-ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_2
+ALTER TABLE possui_casa_captura ADD CONSTRAINT FK_possui_casa_captura_1
     FOREIGN KEY (fk_Captura_cod_captura)
     REFERENCES Captura (cod_captura)
-    ON DELETE SET NULL;        
+    ON DELETE SET NULL;
+           
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
         b) formato .SQL
         
- insert into endereco(estado, cidade, bairro, compl, nº, rua, cod_end )
-values ('ES', 'Serra', 'Laranjeiras', 'Ed.Coloral', 123, '1', '29170-001'),
-		('ES', 'Vitória',	'Horto', null, 234, '2', '29010-002'),
-        ('ES', 'Cariacica',	'Rio Branco', null, 13,	'3', '29111-003'),
-        ('ES', 'Guarapari', 'Praia do Morro', 'Ed. Porto Branco', 124, '4', '29200-004'),
-        ('ES', 'Serra', 'Morada de Laranjeiras', 'Ed.Flores De Maio', 543, '5', '29170-005'),
-        ('ES', 'Vitória', 'Barro Vermelho', null, 45, '6', '29010-006'),
-        ('ES', 'Cachoeiro Itapemirim', 'Coramara', 'Ed. Coqueiros Verdes', 576, '7', '29300-007'),
-        ('ES', 'Linhares', 'Barras', 'Residencial Modular 6', 102, '8', '29900-008'),
-        ('ES', 'Viana', 'Centro-Viana', null, 223, '9', '29130-009'),
-        ('ES', 'São Mateus', 'Centro-São Mateus', 'Residencial Campos', 456, '10', '29310-010');
+ insert into estado(nome_estado)
+values  ('AC'), 
+	('AL'), 
+      	('AP'), 
+      	('AM'), 
+      	('BA'), 
+      	('CE'), 
+      	('DF'), 
+      	('ES'), 
+      	('GO'),
+      	('MA'),
+      	('MT'),
+      	('MS'),
+      	('MG'),
+      	('PA'),
+      	('PB'),
+      	('PR'),
+      	('PE'),
+      	('PI'),
+      	('RJ'),
+      	('RN'),
+      	('RS'),
+      	('RO'),
+      	('RR'),
+      	('SC'),
+      	('SP'),
+      	('SE'),
+      	('TO'); 
 
-insert into sensor (cod_sensor, tipo, nome) 
-values('123-456-789', 'Microfone Mega', 'tapa023.wav'),
-       ('234-567-897', 'Sensor Sonoro Ky-038', 'tapa077.wav'),
-       ('435-769-142',	'Microfone Mega', 'soco002.wav'),
-       ('268-916-031', 'Microfone Mega', 'baterPorta015.wav'),
-       ('469-911-270',	'Sensor Sonoro Ky-038', 'xingamentoVM008.wav'),
-       ('927-881-236',	'Sensor Sonoro Ky-038', 'xingamentoVF008.wav'),
-       ('871-903-054',	'Microfone Mega', 'coisaQeubrando007.wav'),
-       ('673-189-037',	'Sensor Sonoro Ky-033', 'soco038.wav'),
-       ('824-517-900',	'Microfone Mega', 'baterPorta100.wav'),
-       ('735-357-573',	'Sensor Sonoro Ky-035', 'tapa056.wav');
-                                                    
+insert into cidade(nome_cidade, fk_estado_cod_estado)
+values('Serra', 8), 
+	('Vitória', 8), 
+    	('Cariacica', 8), 
+    	('Guarapari', 8), 
+    	('Serra', 8), 
+    	('Vitória', 8), 
+    	('Cachoeiro de Itapemirim', 8), 
+    	('Linhares', 8), 
+    	('Viana', 8), 
+    	('São Mateus', 8);
 
-insert into pessoa (nome, cpf, rg, sexo, idade, celular)
-values ('Rosana Gabriel', '123.456.789-01',	1010, 'F', 48, '9999-8765'),
-		('Jislaine Russo', '765.234.987-08', 2345, 'F',	36,	'9999-7654'),
-        ('Joana Avila', '324.960.845-07', 2020,	'F', 41, '9999-6543'),
-        ('Maria Penhor', '196.936.726-09', 8080, 'F', 53, '9999-5432'),
-        ('Marina Valter', '275.874.098-12', 3030, 'F', 33, '9999-4321'),
-        ('Gabriel Penhasco', '562.916.734-55', 9090, 'M', 50, '9998-0987'),
-        ('Juliana Almaral',	'165.079.945-16', 4040, 'F', 45, '9998-0876'),
-        ('Cristiane Louve', '065.164.807-03', 5050, 'F', 49, '9998-9876'),
-        ('Christian de Jesus', '761.092.845-05', 9876, 'M', 38, '9998-7654'),
-        ('Betina Oliveira',	'495.812.384-04', 4567, 'F', 49, '9998-5432');
-        
-insert into usuario(tipo_sanguineo, numero_emergencial, fk_pessoa_cpf)
-values ('O+', '99123-4567', '123.456.789-01'),
-		('A-', '9123-4567', '765.234.987-08'),
-        ('O+', '9812-6456', '324.960.845-07'),
-        ('AB-', '99887-7766', '196.936.726-09'),
-        ('B+', '99855-6689', '275.874.098-12'),
-        ('A+', '99334-9911', '562.916.734-55'),
-        ('O-', '99865-0977', '165.079.945-16'),
-        ('AB+', '99345-1235', '065.164.807-03'),
-        ('AB-', '98980-7578', '761.092.845-05'),
-        ('A+', '99340-6568', '495.812.384-04');
-        
-insert into delegacia(telefone, codigo, fk_endereco_cod_end)
-values ('(27) 3138-8103', '1', '29170-001'),
-		('(27) 3137 9025', '2', '29010-002'),
-        ('(27) 3136-3111', '3', '29111-003'),
-        ('3161-1220', '4', '29200-004'),
-        ('(27) 3138-8103', '5', '29170-005'),
-        ('3137 9111', '6', '29010-006'),
-        ('(28) 3155-5046', '7', '29300-007'),
-        ('3264-2537', '8', '29900-008'),
-        ('3314-5401', '9', '29130-009'),
-        ('3767-9694', '10', '29310-010');
-        
+insert into complemento(desc_complemento)
+values  ('Ed. Coral'),
+	(null),
+        (null),
+        ('Ed. Porto Branco'),
+        ('Ed. Flores de maio'),
+        (null),
+        ('Ed. Coqueiros verdes'),
+        ('Residencial Modular 6'),
+        (null),
+        ('Residencial Campos');
+     
+insert into endereco(numero)
+values  (123),
+        (234),
+        (13),
+        (124),
+        (543),
+        (45),
+        (576),
+        (102),
+        (223),
+        (456);
 
-insert into policial(nome, email, usuário, senha, fk_delegacia_codigo)
-values ('Paulo Correia', 'pauloC@gmail.com', 'PauloC', '******', '1'),
-		('Ana Laura Mendes', 'anaLaura24@gmail.com', 'AnaLaura2', '******', '2'),
-        ('Matheus Andrade', 'matheusand1@gmail.com', 'MatheusS', '******', '3'),
-        ('Carlos da Silva', 'carlos71@gmail.com', 'Carlos71', '******', '4'),
-        ('Carla Santos', 'carlaS13@gmail.com', 'Carla13', '******', '5'),
-        ('Antonio Fernandes', 'antonioFer@gmail.com', 'AntonioFer', '******', '6'),
-        ('Vitor Costa', 'vitorcosta5@gmail.com', 'VitorCost', '******', '7'),
-        ('Arthur Miranda', 'arthurM4@gmail.com', 'ArthurM', '******', '8'),
-        ('Bruna Almeida', 'brunaAl902@gmail.com', 'Bruna902', '******', '9'),
-        ('Marcos Sousa', 'marcosS36@gmail.com', 'Marcos36', '******', '10');
+insert into bairro(nome_bairro, fk_cidade_cod_cidade, fk_endereco_cod_end)
+values  ('Laranjeiras', 1, 1),
+	('Horto', 2, 1),
+	('Rio Branco', 3, 3),
+	('Praia do Morro', 4, 3),
+	('Morada de Laranjeiras', 5, 4),
+	('Barro Vermelho', 6, 5),
+        ('Coramara', 7, 2),
+        ('Barras', 8, 2),
+        ('Centro-Viana', 9, 2),
+        ('Centro-São Mateus', 10, 4);
+
+insert into logradouro(tipo, descricao)
+values  ('rua', 'céu azul'),
+	('avenida', 'zumbi dos palmares'),
+        ('rua', 'Juscelino Almeida'),
+        ('beco', 'beco sem saida'),
+        ('avenida', 'Brasil'),
+        ('rua', 'rua das Oliveiras'),
+        ('rua', 'Lorelau diniz'),
+        ('rua', 'rua de pedrinhas de brilhante'),
+        ('avenida', 'Vi nilde'),
+        ('beco', 'das preta');
+  
+insert into delegacia(fk_endereco_cod_end)
+values  (1),
+	(2),
+        (3),
+        (4),
+        (5);
         
-insert into casa(FK_Endereço_cod_end, FK_Delegacia_Codigo)
-values ('29170-001', '1'),
-		('29010-002', '2'),
-        ('29111-003', '3'),
-        ('29200-004', '4'),
-        ('29170-005', '5'),
-        ('29010-006', '6'),
-        ('29300-007', '7'),
-        ('29900-008', '8'),
-        ('29130-009', '9'),
-        ('29310-010', '10');
+insert into casa(fk_endereco_cod_end, fk_delegacia_cod_delegacia)
+values (6, 2),
+	(7, 3),
+        (8, 1),
+        (9, 2),
+        (10, 5);
         
-insert into captura (codigo_captura, arquivo_som, data_ini, data_fim, hora_ini, hora_fim)
-values ('1230', 'wav', '2018-06-01', '2018-06-01', '10:27:38', '10:28:07'),
-		('1240', 'wav', '2018-04-12', '2018-04-12', '11:28:49', '11:29:22'),
-        ('1250', 'wav', '2018-02-27', '2018-02-27',	'17:59:11', '18:04:33'),
-        ('1260', 'wav', '2018-10-09', '2018-10-09',	'18:17:00', '18:20:33'),
-        ('1270', 'wav', '2018-12-25', '2018-12-25', '20:00:00', '20:05:59'),
-        ('1280', 'wav', '2018-03-01', '2018-03-01', '10:30:45', '10:32:55'),
-        ('1290', 'wav', '2018-09-10', '2018-09-10', '09:30:54', '09:31:55'),
-        ('1210', 'wav', '2018-03-10', '2018-03-10', '19:22:22', '19:28:22'),
-        ('1220', 'wav', '2018-05-29', '2018-05-29', '18:00:56', '18:06:56'),
-        ('1100', 'wav', '2018-10-31', '2018-10-31', '04:33:00', '04:34:00');
+insert into sensor (tipo, nome) 
+values ('Microfone Mega', 'tapa023.wav'),
+       ('Sensor Sonoro Ky-038', 'tapa077.wav'),
+       ('Microfone Mega', 'soco002.wav'),
+       ('Microfone Mega', 'baterPorta015.wav'),
+       ('Sensor Sonoro Ky-038', 'xingamentoVM008.wav'),
+       ('Sensor Sonoro Ky-038', 'xingamentoVF008.wav'),
+       ('Microfone Mega', 'coisaQeubrando007.wav'),
+       ('Sensor Sonoro Ky-033', 'soco038.wav'),
+       ('Microfone Mega', 'baterPorta100.wav'),
+       ('Sensor Sonoro Ky-035', 'tapa056.wav');
+
+insert into som (local_som, tipo_som)
+values  ('Endereco x no comp', 'tapa'),
+        ('Endereco q no comp', 'soco'),
+        ('Endereco w no comp', 'coisa quebrando'),
+        ('Endereco e no comp', 'xingamento masculino'),
+        ('Endereco r no comp', 'grito feminino'),
+        ('Endereco t no comp', 'xingamento feminino'),
+        ('Endereco y no comp', 'tapa'),
+        ('Endereco u no comp', 'tapa'),
+        ('Endereco i no comp', 'soco'),
+        ('Endereco o no comp', 'grito masculino');
+
+insert into tipo_arquivo (tipo_arquivo)
+values  ('WAV'),
+        ('MP3'),
+        ('ACC');
+
+insert into captura (arquivo, data_ini, data_fim, hora_ini, hora_fim, fk_tipo_arquivo_cod_arquivo, fk_sensor_cod_sensor)
+values  ('capCasa1', '2018-06-01', '2018-06-01', '10:27:38', '10:28:07', 1, 10),
+        ('capCasa67', '2018-04-12', '2018-04-12', '11:28:49', '11:29:22', 1, 9),
+        ('capCasa1', '2018-02-27', '2018-02-27', '17:59:11', '18:04:33', 1, 10),
+        ('capCasa2', '2018-10-09', '2018-10-09', '18:17:00', '18:20:33', 1, 5),
+        ('capCasa44', '2018-12-25', '2018-12-25', '20:00:00', '20:05:59', 1, 8),
+        ('capCasa10', '2018-03-01', '2018-03-01', '10:30:45', '10:32:55', 1, 2),
+        ('capCasa9', '2018-09-10', '2018-09-10', '09:30:54', '09:31:55', 1, 10),
+        ('capCasa9', '2018-03-10', '2018-03-10', '19:22:22', '19:28:22', 1, 9),
+        ('capCasa10', '2018-05-29', '2018-05-29', '18:00:56', '18:06:56', 1, 4),
+        ('capCasa3', '2018-10-31', '2018-10-31', '04:33:00', '04:34:00', 1, 6);
+
+insert into sexo(tipo)
+values  ('F'),
+	('M');
+
+insert into pessoa(nome, fk_sexo_cod_sexo)
+values  ('Ana Laura Mendes',1),
+        ('Matheus Andrade', 2),
+        ('Carlos da Silva',2),
+        ('Carla Santos',1),
+        ('Antonio Fernandes', 2),
+        ('Vitor Costa', 2),
+        ('Arthur Miranda', 2),
+        ('Bruna Almeida', 1),
+        ('Marcos Sousa', 2),
+	('Rosana Gabriel', 1),
+	('Jislaine Russo', 1),
+ 	('Joana Avila', 1),
+  	('Maria Penhor', 1),
+   	('Marina Valter', 1),     
+  	('Gabriel Penhasco',2),
+  	('Juliano Almaral', 2),
+        ('Cristiano Louve', 2),
+        ('Christian de Jesus',2),
+       	('Betina Oliveira', 1);
+
+
+insert into cadastrados(cpf, rg, fk_pessoa_cod_pessoa)
+values  ('123.456.789-01', 1010, 4),
+	('765.234.987-08', 2345, 7),
+        ('324.960.845-07', 2020, 8),
+        ('196.936.726-09', 8080, 9),
+        ('275.874.098-12', 3030,10),
+        ('562.916.734-55', 9090, 11),
+        ('165.079.945-16', 4040, 12),
+        ('065.164.807-03', 5050, 13),
+        ('761.092.845-05', 9876, 14),
+        ('495.812.384-04', 4567, 15),
+        ('567.890.245-07', 2345 , 16),
+        ('135.589.654.-09', 3579, 17),
+        ('247.986.750-46', 4679, 18),
+        ('123.064.379-67', 6679, 19);
+
+insert into sangue(tipo_sanguineo)
+values  ('A+'),
+	('A-'),
+        ('O+'),
+        ('O-'),
+        ('AB+'),
+        ('AB-'),
+        ('B+'),
+        ('B-');
+
+insert into usuario(fk_cadastrados_fk_pessoa_cod_pessoa, fk_sangue_cod_sanguineo)
+values  (4, 1),
+        (8, 1),
+        (10, 3),
+        (11, 2),
+        (12, 2),
+        (13, 8),
+        (14, 6);
         
+insert into relacao(tipo_relacao)
+values  ('filho'),
+	('marido'),
+        ('pai'),
+        ('avô'),
+        ('tio');
         
-insert into depende (FK_Sensor_cod_sensor, FK_Captura_codigo_captura)
-values ('123-456-789', '1230'),
-		('234-567-897', '1240'),
-        ('435-769-142', '1250'),
-        ('268-916-031', '1260'),
-        ('469-911-270', '1270'),
-        ('927-881-236', '1280'),
-        ('871-903-054', '1290'),
-        ('673-189-037', '1210'),
-        ('824-517-900', '1220'),
-        ('735-357-573', '1100'); 
+insert into parceiro(fk_cadastrados_fk_pessoa_cod_pessoa, fk_relacao_cod_relacao)  
+values  (7, 2),
+	(9, 2),
+        (15, 2),
+        (16, 1),
+        (17, 1),
+        (18, 3),
+        (19, 2);
+
+insert into policial(senha, fk_pessoa_cod_pessoa, fk_delegacia_cod_delegacia)
+values  ('1234', 1, 5),
+	('1234', 2, 3),
+        ('1234', 3, 1),
+        ('1234', 4, 2),
+        ('1234', 5, 4);
+
+insert into tipo_contato(desc_tipo)
+values  ('telefone'),
+	('email');
+
+insert into contato(descricao, fk_tipo_contato_cod_tipo)
+values  ('pauloC@gmail.com', 2),
+	('anaLaura24@gmail.com', 2),
+        ('matheusand1@gmail.com',2),
+        ('carlos71@gmail.com',2),
+        ('carlaS13@gmail.com', 2),
+        ('antonioFer@gmail.com', 2),
+        ('vitorcosta5@gmail.com', 2),
+        ('arthurM4@gmail.com',2),
+        ('brunaAl902@gmail.com',2),
+        ('marcosS36@gmail.com', 2),
+        ('9812-6456',1),
+        ('99887-7766',1),
+        ('99855-6689',1),
+        ('99334-9911',1),
+        ('99865-0977',1),
+        ('99345-1235', 1),
+        ('98980-7578', 1),
+        ('93578-3679', 1),
+        ('99340-6568', 1);
+
+insert into possui_cadastrados_casa(fk_casa_cod_casa, fk_cadastrados_fk_pessoa_cod_pessoa)
+values (1, 4),
+	(1, 7),
+        (2, 8),
+        (2, 13),
+        (2, 9),
+        (2, 19),
+        (3, 10),
+        (3, 18),
+        (4, 11),
+        (4, 16),
+        (5, 12),
+        (5, 14),
+        (5, 17),
+        (5, 15);
+        
+insert into possui_cadastrados_contato(fk_cadastrados_fk_pessoa_cod_pessoa, fk_contato_cod_contato)
+values (4, 11),
+	(8, 12),
+        (10, 13),
+        (11, 14),
+        (12, 15),
+        (13, 16),
+        (14, 17),
+        (7, 18),
+        (18, 19);
+
+        
+delete from som where cod_som > 0;
+ALTER SEQUENCE som_cod_som_seq RESTART WITH 1;
+insert into som (local_som, tipo_som)
+values (null, 'tapa'),
+        (null, 'soco'),
+        (null, 'vidro quebrando'),
+        (null, 'xingamento masculino'),
+        (null, 'grito feminino'),
+        (null, 'xingamento feminino'),
+        (null, 'choro'),
+        (null, 'panela caindo'),
+        (null, 'porta batendo'),
+        (null, 'grito masculino');
+
+       
+insert into possui_capt_som( fk_captura_cod_captura, fk_som_cod_som)
+values (1,10),
+	(1,3),
+        (1,9),
+        (2,4),
+        (2,1),
+        (3,2),
+        (3,4),
+        (3,8),
+        (3,9),
+        (3,5),
+        (4,7),
+        (4,1),
+        (4,2),
+        (4,4),
+        (5,9),
+        (5,4),
+        (6,3),
+        (7,5),
+        (7,8),
+        (8,10),
+        (8,1),
+        (8,8),
+        (9,2),
+        (9,4),
+        (9,3),
+        (10,9),
+        (10,7);
+       
+insert into possui_casa_captura(fk_casa_cod_casa, fk_captura_cod_captura)
+values (1, 1),
+	(1, 2),
+        (1, 3),
+        (2, 4),
+        (3, 5),
+        (3, 6),
+        (5, 7),
+        (5, 8),
+        (5, 9),
+        (5, 10);
+
+insert into contato(descricao, fk_tipo_contato_cod_tipo)
+values('3325-4537', 2),
+	('3137-1652', 2),
+        ('3224-3186', 2),
+        ('3325_3955', 2),
+        ('3314-4287', 2);
+        
+insert into possui_contato_delegacia(fk_contato_cod_contato, fk_delegacia_cod_delegacia)
+values (20, 1),
+        (21, 2),
+        (22, 3),
+        (23, 4),
+        (24, 5);
+        
+insert into possui_end_logradouro(fk_endereco_cod_end, fk_logradouro_cod)
+values (1, 1),
+	(2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+        (6, 6),
+        (7, 7),
+        (8, 8),
+        (9, 9),
+	(10, 10);
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         a) Junção dos scripts anteriores em um único script 
