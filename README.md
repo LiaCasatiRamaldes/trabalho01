@@ -90,19 +90,52 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     [Grupo02]: [Nomes dos que participaram na avaliação]
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 #### 5.2 DECISÕES DE PROJETO
-   	Endereço: Em nosso projeto optamos por uma tabela endereço, para evitar que precisasse fazer os mesmos campos em tabelas diferentes.
-   	<br>
-  	 Pessoa: Em nosso projeto optamos por uma tabela pessoa, para armazenar as informaçôes referentes aos usuários cadastrados, para futuras consultas.
-   	<br>
+   	Pessoa: Em nosso projeto optamos por uma tabela pessoa, para armazenar as informaçôes referentes aos nomes e sexo dos usuários cadastrados.
+	<br>
+	Sexo: Em nosso projeto optamos por uma tabela sexo, para armazenar as informaçôes referentes ao sexo de cada usuário cadastrado.
+	<br>
+	Cadastrados: Em nosso projeto optamos por uma tabela cadastrados, para armazenar as informaçôes referentes ao CPF e RG dos usuários.
+	<br>
 	Usuário: Em nosso projeto optamos por uma tabela usuário, para armazenar as outras informaçôes referentes aos usuários cadastrados, para futuras consultas. 
+	<br>
+	Sangue: Em nosso projeto optamos por uma tabela sangue, para armazenar as outras informaçôes referentes ao tipo sanguineo dos cadastrados. 
+	<br>
+	Parceiro: Em nosso projeto optamos por uma tabela parceiro, para armazenar dados referente ao parceiro dos usuários cadastrados.
+	<br>
+	Relacao: Em nosso projeto optamos por uma tabela relação, para armazenar dados referente a relação dos parceiros de cada usuário cadastrado.
+	<br>
+	Contato: Em nosso projeto optamos por uma tabela contato, para armazenar dados referente ao contato dos usuários cadastrados.
+	<br>
+	Policial: Em nosso projeto optamos por uma tabela policial, para armazenar as informaçôes referentes aos policiais cadastrados, para futuras consultas.
    	<br>
-   	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica). 
+	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica).
+	<br>
+	Casa: Em nosso projeto optamos por uma tabela casa, para armazenar dados referentes ao código de casa casa registrada.
+	<br>
+	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica). 
    	<br>
-   	Policial: Em nosso projeto optamos por uma tabela policial, para armazenar as informaçôes referentes aos policiais cadastrados, para futuras consultas.
+	Endereço: Em nosso projeto optamos por uma tabela endereço, para filtrar dados referentes ao endereço dos usuários em consultas futuras.
    	<br>
-   	Sensor: Em nosso projeto optamos por uma tabela sensor, para armazenar as informaçôes referentes aos sensores cadastrados, para futuras consultas.
+	Bairro:Em nosso projeto optamos por uma tabela bairro, para filtrar dados e relatórios referente ao bairro do usuário cadastrado em consultas futuras.
+	<br>
+	Cidade: Em nosso projeto optamos por uma tabela cidade, para filtrar dados e relatórios referente a cidade dos usuários cadastrados.
+	<br>
+	Estado: Em nosso projeto optamos por uma tabela estado, para filtrar dados e relatórios do estado dos usuários cadastrados.
+	<br>
+   	Sensor: Em nosso projeto optamos por uma tabela sensor, para armazenar as informaçôes referentes aos sensores cadastrados, para consultas futuras.
    	<br>
+        Logradouro: Em nosso projeto optamos por uma tabela logradouro, para filtrar dados de ruas, avenidas e etc de cada usuário cadastrado.
+	<br>
+	Complemento: Em nosso projeto optamos por uma tabela complemento, para filtrar com mais precisão o endereço dos usuários em consultas futuras.
+	<br>
    	Captura: Em nosso projeto optamos por uma tabela captura, para armazenar as informaçôes referentes aos audios capturados, para futuras consultas.
+	<br>
+	Som: Em nosso projeto optamos por uma tabela som, para armazenar as informaçôes referentes aos tipos de sons capturados, para futuras consultas.
+	<br>
+	Sensor: Em nosso projeto optamos por uma tabela sensor, que depende de captura e armazena dados referentes ao sensor do usuário cadastrado no sistema.
+	<br>
+	Tipo Arquivo: Em nosso projeto optamos por uma tabela Tipo Arquivo, para armazenar as informaçôes referentes ao tipo do arquivo capturado pela captura.
+	<br>
    
     
 #### 5.3 DESCRIÇÃO DOS DADOS 
@@ -944,20 +977,6 @@ select * from Depende;
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img9.png)
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
-
-select * from pessoa where fk_sexo_cod_sexo = 1;
-
-select nome, cod_pessoa, tipo_sanguineo, cod_sanguineo from usuario inner join pessoa
-on(fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa)
-inner join sangue on (fk_sangue_cod_sanguineo = cod_sanguineo)
-where fk_sangue_cod_sanguineo = 1;
-
-select nome, cpf, rg, fk_pessoa_cod_pessoa from cadastrados inner join pessoa
-on (fk_pessoa_cod_pessoa = cod_pessoa) where cod_pessoa = 8;
-
-select nome_bairro, nome_cidade from bairro inner join cidade
-on (cod_cidade = fk_cidade_cod_cidade) where cod_cidade = 3;
-
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
@@ -1013,6 +1032,7 @@ select date_part('year',age(current_date, ('2002-12-26')));
 
 extract ('year' from ('2002-12-26'));
 
+
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
 
 update Pessoa set nome_completo = 'Maria Penhores' where cpf = '196.936.726-09';
@@ -1028,22 +1048,9 @@ update Policial set email = 'pauloCR@gmail.com' where nome = 'Paulo Correia';
 delete from Policial where fk_delegacia_codigo = '9';
 
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
+        a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
+        b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
         
-select nome, cpf, rg, fk_sexo_cod_sexo, cod_pessoa, fk_pessoa_cod_pessoa from cadastrados 
-inner join pessoa on (fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
-
-select * from pessoa inner join sexo on (fk_sexo_cod_sexo = cod_sexo) order by cod_sexo; 
-
-select * from parceiro inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
-
-select * from usuario inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
-
-select cod_cidade, nome_cidade, cod_bairro, nome_bairro from cidade 
-inner join bairro on (cod_cidade = fk_cidade_cod_cidade) order by cod_cidade;
-
-select cod_pessoa, nome, cod_contato, descricao from contato 
-inner join possui_cadastrados_contato on (cod_contato = fk_contato_cod_contato)
-inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by nome;
 
 ## Marco de Entrega 02 em: (16/06/2018)<br>
 ### ATUALIZAÇÃO DA DOCUMENTAÇÃO DOS SLIDES PARA APRESENTAÇAO SEMESTRAL (Mínimo 6 e Máximo 10)<br>
@@ -1053,32 +1060,11 @@ inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
 
-
-
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
-
-select * from pessoa right join cadastrados on (fk_pessoa_cod_pessoa = cod_pessoa);
-
-select * from usuario right join sangue on (fk_sangue_cod_sanguineo = cod_sanguineo);
-
-select * from parceiro left join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa);
-
-select * from casa left join possui_cadastrados_casa on (fk_casa_cod_casa = cod_casa);
-
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
 #### 9.10	SUBCONSULTAS (Mínimo 3)<br>
-
-select * from pessoa where cod_pessoa = (select fk_pessoa_cod_pessoa from cadastrados where rg = '2020'); 
-
-select cod_casa, fk_endereco_cod_end, fk_delegacia_cod_delegacia, fk_cadastrados_fk_pessoa_cod_pessoa from casa 
-inner join possui_cadastrados_casa on (fk_casa_cod_casa = cod_casa) 
-where fk_cadastrados_fk_pessoa_cod_pessoa = (select fk_cadastrados_fk_pessoa_cod_pessoa from usuario where fk_sangue_cod_sanguineo = 3);
-
-select * from sensor inner join captura on (cod_sensor = fk_sensor_cod_sensor) 
-inner join possui_casa_captura on (cod_captura = fk_captura_cod_captura)
-where fk_casa_cod_casa = (select cod_casa from casa where fk_delegacia_cod_delegacia = 1);
 
 #### 9.11	LISTA DE CODIGOS DAS FUNÇÕES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.
