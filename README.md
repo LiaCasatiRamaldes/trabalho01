@@ -124,7 +124,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 	<br>
    	Sensor: Em nosso projeto optamos por uma tabela sensor, para armazenar as informaçôes referentes aos sensores cadastrados, para consultas futuras.
    	<br>
-        Logradouro: Em nosso projeto optamos por uma tabela logradouro, para filtrar dados de ruas, avenidas e etc de cada usuário cadastrado.
+	Logradouro: Em nosso projeto optamos por uma tabela logradouro, para filtrar dados de ruas, avenidas e etc de cada usuário cadastrado.
 	<br>
 	Complemento: Em nosso projeto optamos por uma tabela complemento, para filtrar com mais precisão o endereço dos usuários em consultas futuras.
 	<br>
