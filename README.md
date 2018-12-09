@@ -6,8 +6,8 @@ Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
 Gabriela Neves: gabrielasantosneves11@gmail.com <br>
-Lia Casati Ramaldes:liac.ramaldes@gmail.com <br>
-Thamiris Moreira:thamirismais@gmail.com <br>
+Lia Casati Ramaldes: liac.ramaldes@gmail.com <br>
+Thamiris Moreira: thamirismais@gmail.com <br>
 ...
 
 ### 2.INTRODUÇÃO E MOTIVAÇAO<br>
@@ -44,7 +44,15 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 ![Exemplo de Tabela de dados do Sensor de Violência Doméstica](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/arquivos/Tabela%20MOD%20(1).xlsx?raw=true "Tabela - Sensor de Violência Doméstica") 
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
+    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes?
+    
+    1- a) Relatório: Eu no papel de policial desejo saber as informações de uma captura para registrar um boletim de ocorrência.
+       b) Informações:
+       Sexo para usuário
+       Sexo para parceiro
+       Média de tempo de captura
+       Som frequente na captura
+    
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
     1- Relatório com os sons mais captados.<br>
