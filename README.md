@@ -58,9 +58,6 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
        b) Informações: 
        Qual captura foi acionada
        Endereço da captura que foi acionada
-       
-    3- a) Relatório: Eu como gerente do sistema desejo um relatório das casas que não houveram nenhum registro no último semestre para       saber se há algo de errado com o sensor. 
-       
     
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
