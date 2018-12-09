@@ -102,7 +102,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     
     POLICIAL: Tabela que armazena as informações relativas ao policial, herdando os campos de Pesssoa.<br>
     (Nome e Sexo) já citados acima.<br>
-    Senha: 
+    Senha: Campo que armazena a senha do policial de acesso ao sistema.<br>
     
     CADASTRADOS: Tabela que herda os campos de Pessoa.<br>
     (Nome e Sexo) já citados acima.<br>
