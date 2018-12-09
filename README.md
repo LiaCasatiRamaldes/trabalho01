@@ -1058,6 +1058,23 @@ delete from Policial where fk_delegacia_codigo = '9';
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
 
+select fk_casa_cod_casa, count(fk_casa_cod_casa) as Quantidade_de_captura from captura 
+inner join possui_casa_captura on (fk_captura_cod_captura = cod_captura) group by fk_casa_cod_casa;
+
+select nome_cidade , count(fk_cidade_cod_cidade) as Quantidade_de_bairros_cadastrados from bairro 
+inner join cidade on (fk_cidade_cod_cidade = cod_cidade) group by nome_cidade;
+
+select cod_casa, count(fk_pessoa_cod_pessoa) as Quantidade_de_pessoas_na_casa from possui_cadastrados_casa inner join casa on (fk_casa_cod_casa = cod_casa)
+inner join cadastrados on (fk_cadastrados_fk_pessoa_cod_pessoa = fk_pessoa_cod_pessoa) group by cod_casa order by cod_casa;
+
+select cod_captura, fk_casa_cod_casa, (hora_fim - hora_ini) as Menor_tempo_de_captura from captura inner join possui_casa_captura on (cod_captura = fk_captura_cod_captura) where (hora_fim - hora_ini) = (select min(hora_fim - hora_ini) from captura);  
+
+select cod_captura, fk_casa_cod_casa, (hora_fim - hora_ini) as Maior_tempo_de_captura from captura inner join possui_casa_captura on (cod_captura = fk_captura_cod_captura) where (hora_fim - hora_ini) = (select max(hora_fim - hora_ini) from captura);  
+
+select cod_som, tipo_som, count(fk_som_cod_som) from som inner join possui_capt_som on (cod_som = fk_som_cod_som) group by cod_som order by cod_som; 
+
+
+
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join
