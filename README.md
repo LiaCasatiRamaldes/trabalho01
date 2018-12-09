@@ -95,52 +95,89 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
    
     PESSOA: Tabela que armazena as informações relativas ao usuário<br>
     Nome: Campo que armazena o nome completo de cada usuário cadastrado no sistema.<br>
+    
+    SEXO: Tabela que possui de Pessoa.<br>
+    codigo sexo: O codigo do sexo da pessoa cadastrada no sistema.<br>
+    tipo sexo: O tipo do sexo da pessoa cadastrada no sistema.<br>
+    
+    POLICIAL: Tabela que armazena as informações relativas ao policial, herdando os campos de Pesssoa.<br>
+    (Nome e Sexo) já citados acima.<br>
+    Senha: 
+    
+    CADASTRADOS: Tabela que herda os campos de Pessoa.<br>
+    (Nome e Sexo) já citados acima.<br>
     CPF: Campo que armazena o número de Cadastro de Pessoa Física para cada usuário cadastrado no sistema.<br>
     RG: Campo que armazena o número da Carteira de Identidade/RG (Registro Geral) de cada usuário cadastrado no sistema.<br>
-    Idade: Campo que armazena a idade em anos de cada usuário cadastrado no sistema.<br>
-    Sexo: Campo que armazena o sexo de cada usuário cadastrado no sistema.<br>  
-    Celular: Campo não obrigatório que armazena o telefone movél para contato de cada usuário cadastrado no sistema.<br> 
     
-    USUÁRIO: Tabela que herda os campos de Pessoa<br>
-    (Nome, CPF, RG, Idade, Sexo, Celular) já citados acima.<br>
-    Celular de emergência: Campo não obrigatório que armazena o telefone movél para contato de algum parente/amigo de confiança de cada     usuário cadastrado no sistema.<br> 
+    CONTATO: Cadastrados possui de Contato.<br>
+    Codigo contato: Campo que armazena o Codigo para identificar o contato.<br>
+    Descricao: Campo que armazena a descrição do contato.<br>
+    TIPO CONTATO: Tabela que possui do Contato.<br>
+    Codigo tipo: Campo que armazena o tipo do codigo.<br>
+    Descricao tipo: Campo que armazena a descricao do tipo do contato.<br>
+    
+    USUÁRIO: Tabela que herda os campos de Cadastrados<br>
+    (CPF e RG) já citados acima.<br>
+    
+    SANGUE: Tabela que pertence a tabela de Usuário.<br>
     Tipo Sanguíneo: Campo que armazena o tipo sanguíneo de cada usuário.<br>
     
-    ENDEREÇO: Tabela que armazena as informações relativas ao endereço da delegacia ou do usuário<br>
-    Estado: Campo que armazena o estado que está localizada a residência/delegacia.<br>
-    Cidade: Campo que armazena a cidade que está localizada a residência/delegacia.<br>
-    Bairro: Campo que armazena o bairro que está localizada a residência/delegacia.<br>
-    Rua: Campo que armazena a rua que está localizada a residência/delegacia.<br>
-    Complemento: Campo não obrigatório que armazena uma informação complementar ao endereço(Nome do prédio, ...) que está localizado a       residência/delegacia.<br>
-    Número: Campo que armazena o número da residência/delegacia.<br>
+    PARCEIRO: Tabela que herda os campos de Cadastrados.<br>
+    
+    RELACAO: Tabela que pertence a tabela de Parceiro.<br>
+    Tipo Relacao: Campo que armazena o tipo de relação dos parceiros registrados no sistema.<br>
+    
+    CASA: Tabela que é possuida por Cadastrados e monitorada por Delegacia.<br>
+    Codigo casa: Campo que armazena o codigo da casa dos cadastrados.<br>
+    
+    DELEGACIA: Tabela que armazena os dados referentes a Delegacia e monitora Casa.<br> 
+    Codigo Delegacia: Campo que atribui um código para a delegacia cadastrada.<br>
+    
+    ENDEREÇO: Tabela que armazena as informações relativas ao endereço da Delegacia ou dos Cadastrados.<br>
+    Numero: Campo que armazena o número da residência/delegacia.<br>
     Código Endereço: Campo que atribui um código para o endereço cadastrado, para que aceite um endereço repetido e não cause nenhum         erro no sistema.<br>
     
-    DELEGACIA: Tabela que herda os campos de Endereço<br>
-    (Estado, Cidade, Bairro, Rua, Complemento, Número, Código Endereço) já citados acima.<br>
-    Telefone: Campo que armazena o telefone para contato de cada delegacia cadastrado no sistema.<br> 
-    Código: Campo que atribui um código para a delegacia cadastrada.<br>
+    BAIRRO: Tabela que possui de Endereço e armazena o bairro que está localizada a residência/delegacia.<br>
+    Codigo Bairro: Campo que atribui um código para o bairro cadastrado, para que aceite um endereço repetido e não cause nenhum             erro no sistema.<br>
+    Nome Bairro: Campo que atribui um nome para o bairro registrado.<br>
     
-    CASA: Tabela que herda os campos de Endereço.<br>
+    CIDADE: Tabela que possui de bairro e que armazena a cidade que está localizada a residência/delegacia.<br>
+    Codigo Cidade: Campo que atribui um código para a cidade cadastrada, para que aceite um endereço repetido.<br>
+    Nome Cidade: Campo que atribui um nome para a cidade registrada.<br>
     
-    POLICIAL: Tabela que armazena as informações relativas ao policial<br>
-    Nome: Campo que armazena o nome completo de cada policial cadastrado no sistema.<br>
-    EMAIL: Campo que armazena o email de contato de cada policial cadastrado no sistema.<br>
-    Delegacia: Campo que armazena a delegacia que cada policial cadastrado no sistema pertence.<br>
-    Usuário: Campo que armazena um nome de usuário único, utilizado como identificador para cada policial cadastrado no sistema.<br>
-    Senha: Campo que armazena uma senha para reconhecimento do usuário.<br>
+    ESTADO: Tabela que possui de Cidade e armazena os dados de em que estado está localizada a residência/delegacia.<br>
+    Codigo Estado: Campo que atribui um código para o estado cadastrado, para que aceite um estado repetido.<br>
+    Nome Estado: Campo que atribui um nome para o estado registrado.<br>
+   
+    COMPLEMENTO: Tabela que possui de Endereço, não obrigatório que armazena uma informação complementar ao endereço(Nome do prédio,         ...) que está localizado a residência/delegacia.<br>
+    Codigo Complemento: Campo que atribui um código para o complemento registrado.<br>
+    Descricao Complemento: Campo que armazena a descrição do complemento.<br>
+    
+    LOGRADOURO: Tabela que armazena ruas, avenidas e etc do usuário cadastrado.<br>
+    Codigo: Campo que atribui um código para o logradouro, para que aceite o mesmo repetido.<br>
+    Descricao: Campo que armazena a descrição do logradouro.<br>
+    Tipo: Campo que armazena o tipo de logradouro do usuário registrado.<br>
     
     CAPTURA: Tabela que armazena as informações relativas ao som capturado<br>
-    Código Capturado: Campo que atribui um código para o som capturado.<br>
-    Arquivo de Som: Campo que armazena a gravação do audio capturado.<br>
+    Código Captura: Campo que atribui um código para o som capturado.<br>
+    Arquivo: Campo que armazena a gravação do audio capturado.<br>
     Data Inicial: Campo que armazena a data que começou a gravação.<br>
     Data Final: Campo que armazena a data que terminou a gravação.<br>
     Hora Inicial: Campo que armazena o hórario que começou a gravação.<br>
     Hora Final: Campo que armazena o hórario que terminou a gravação.<br>
     
-    SENSOR: Tabela que armazena as informações relativas ao som<br>
-    Código do sensor: Campo que atribui um código para o sensor cadastrado.<br>
+    SENSOR: Tabela depende de Captura e que armazena as informações relativas ao sensor de cada som.<br>
+    Código: Campo que atribui um código para o sensor cadastrado.<br>
     Tipo: Campo que armazena o tipo do sensor.<br>
     Nome: Campo que armazena o nome do sensor.<br>
+    
+    SOM: Tabela que possui de Captura e que armazena as informações relativas ao som.<br>
+    Local som: Campo que armazena um local de onde foi localizado o som.<br>
+    Tipo som: Campo que armazena o tipo do som.<br>
+    Código som: Campo que atribui um código para o som cadastrado.<br>
+    
+    TIPO ARQUIVO: Tabela pertence a Captura e que armazena as informações relativas ao tipo do arquivo do sensor.<br> 
+    Código Arquivo: Campo que atribui um código para o arquivo da gravação do áudio.<br>
       
 
 >## Marco de Entrega 01 em: (12/05/2018)<br>
