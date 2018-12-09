@@ -97,8 +97,8 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     Nome: Campo que armazena o nome completo de cada usuário cadastrado no sistema.<br>
     
     SEXO: Tabela que possui de Pessoa.<br>
-    codigo sexo: O codigo do sexo da pessoa cadastrada no sistema.<br>
-    tipo sexo: O tipo do sexo da pessoa cadastrada no sistema.<br>
+    Codigo Sexo: Campo que atribui um código para o sexo da pessoa cadastrada no sistema.<br>
+    Tipo Sexo: Campo que atribui o tipo do sexo da pessoa cadastrada no sistema.<br>
     
     POLICIAL: Tabela que armazena as informações relativas ao policial, herdando os campos de Pesssoa.<br>
     (Nome e Sexo) já citados acima.<br>
@@ -109,26 +109,28 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     CPF: Campo que armazena o número de Cadastro de Pessoa Física para cada usuário cadastrado no sistema.<br>
     RG: Campo que armazena o número da Carteira de Identidade/RG (Registro Geral) de cada usuário cadastrado no sistema.<br>
     
-    CONTATO: Cadastrados possui de Contato.<br>
-    Codigo contato: Campo que armazena o Codigo para identificar o contato.<br>
+    CONTATO: Tabela possuida por Cadastrados que armazena dados referentes ao contato da pessoa cadastrada.<br>
+    Codigo contato: Campo que atribui um código para o contato cadastrado.<br>
     Descricao: Campo que armazena a descrição do contato.<br>
-    TIPO CONTATO: Tabela que possui do Contato.<br>
-    Codigo tipo: Campo que armazena o tipo do codigo.<br>
-    Descricao tipo: Campo que armazena a descricao do tipo do contato.<br>
     
-    USUÁRIO: Tabela que herda os campos de Cadastrados<br>
+    TIPO CONTATO: Tabela que possuida por Contato e que atribui o tipo do contato da pessoa cadastrada no sistema.<br>
+    Codigo tipo: Campo que armazena o tipo do codigo.<br>
+    Descricao tipo: Campo que armazena a descrição do tipo do contato.<br>
+    
+    USUÁRIO: Tabela que herda os campos de Cadastrados.<br>
     (CPF e RG) já citados acima.<br>
     
-    SANGUE: Tabela que pertence a tabela de Usuário.<br>
+    SANGUE: Tabela que pertence a tabela de Usuário e contém dados referentes ao tipo sanguíneo dos cadastrados.<br>
     Tipo Sanguíneo: Campo que armazena o tipo sanguíneo de cada usuário.<br>
     
     PARCEIRO: Tabela que herda os campos de Cadastrados.<br>
+    (CPF e RG) já citados acima.<br>
     
-    RELACAO: Tabela que pertence a tabela de Parceiro.<br>
+    RELACAO: Tabela que pertence a Parceiro e dados referentes ao já mencionado.<br>
     Tipo Relacao: Campo que armazena o tipo de relação dos parceiros registrados no sistema.<br>
     
-    CASA: Tabela que é possuida por Cadastrados e monitorada por Delegacia.<br>
-    Codigo casa: Campo que armazena o codigo da casa dos cadastrados.<br>
+    CASA: Tabela que é possuida por Cadastrados e monitorada por Delegacia, referente ao dados das casas registradas.<br>
+    Codigo Casa: Campo que armazena o código da casa dos cadastrados.<br>
     
     DELEGACIA: Tabela que armazena os dados referentes a Delegacia e monitora Casa.<br> 
     Codigo Delegacia: Campo que atribui um código para a delegacia cadastrada.<br>
