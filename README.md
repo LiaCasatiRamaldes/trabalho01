@@ -44,6 +44,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 ![Exemplo de Tabela de dados do Sensor de Violência Doméstica](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/arquivos/Tabela%20MOD%20(1).xlsx?raw=true "Tabela - Sensor de Violência Doméstica") 
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
+   
     a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes?
     
     1- a) Relatório: Eu no papel de policial desejo saber as informações de uma captura para registrar um boletim de ocorrência.
@@ -52,6 +53,14 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
        Sexo para parceiro
        Média de tempo de captura
        Som frequente na captura
+       
+    2- a) Relatório: Eu como policial desejo saber o endereço para ir no local de emergência.
+       b) Informações: 
+       Qual captura foi acionada
+       Endereço da captura que foi acionada
+       
+    3- a) Relatório: Eu como gerente do sistema desejo um relatório das casas que não houveram nenhum registro no último semestre para       saber se há algo de errado com o sensor. 
+       
     
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
