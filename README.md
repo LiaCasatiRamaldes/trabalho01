@@ -975,6 +975,20 @@ select * from Depende;
 ![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/img9.png)
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+
+select * from pessoa where fk_sexo_cod_sexo = 1;
+
+select nome, cod_pessoa, tipo_sanguineo, cod_sanguineo from usuario inner join pessoa
+on(fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa)
+inner join sangue on (fk_sangue_cod_sanguineo = cod_sanguineo)
+where fk_sangue_cod_sanguineo = 1;
+
+select nome, cpf, rg, fk_pessoa_cod_pessoa from cadastrados inner join pessoa
+on (fk_pessoa_cod_pessoa = cod_pessoa) where cod_pessoa = 8;
+
+select nome_bairro, nome_cidade from bairro inner join cidade
+on (cod_cidade = fk_cidade_cod_cidade) where cod_cidade = 3;
+
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
@@ -1030,7 +1044,6 @@ select date_part('year',age(current_date, ('2002-12-26')));
 
 extract ('year' from ('2002-12-26'));
 
-
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
 
 update Pessoa set nome_completo = 'Maria Penhores' where cpf = '196.936.726-09';
@@ -1046,10 +1059,23 @@ update Policial set email = 'pauloCR@gmail.com' where nome = 'Paulo Correia';
 delete from Policial where fk_delegacia_codigo = '9';
 
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
-        a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
-        b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
-        
+       
+select nome, cpf, rg, fk_sexo_cod_sexo, cod_pessoa, fk_pessoa_cod_pessoa from cadastrados 
+inner join pessoa on (fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
 
+select * from pessoa inner join sexo on (fk_sexo_cod_sexo = cod_sexo) order by cod_sexo; 
+
+select * from parceiro inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
+
+select * from usuario inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by cod_pessoa;
+
+select cod_cidade, nome_cidade, cod_bairro, nome_bairro from cidade 
+inner join bairro on (cod_cidade = fk_cidade_cod_cidade) order by cod_cidade;
+
+select cod_pessoa, nome, cod_contato, descricao from contato 
+inner join possui_cadastrados_contato on (cod_contato = fk_contato_cod_contato)
+inner join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa) order by nome;
+        
 ## Marco de Entrega 02 em: (16/06/2018)<br>
 ### ATUALIZAÇÃO DA DOCUMENTAÇÃO DOS SLIDES PARA APRESENTAÇAO SEMESTRAL (Mínimo 6 e Máximo 10)<br>
 <br>
@@ -1073,13 +1099,30 @@ select cod_captura, fk_casa_cod_casa, (hora_fim - hora_ini) as Maior_tempo_de_ca
 
 select cod_som, tipo_som, count(fk_som_cod_som) from som inner join possui_capt_som on (cod_som = fk_som_cod_som) group by cod_som order by cod_som; 
 
-
-
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
+
+select * from pessoa right join cadastrados on (fk_pessoa_cod_pessoa = cod_pessoa);
+
+select * from usuario right join sangue on (fk_sangue_cod_sanguineo = cod_sanguineo);
+
+select * from parceiro left join pessoa on (fk_cadastrados_fk_pessoa_cod_pessoa = cod_pessoa);
+
+select * from casa left join possui_cadastrados_casa on (fk_casa_cod_casa = cod_casa);
+
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
 #### 9.10	SUBCONSULTAS (Mínimo 3)<br>
+
+select * from pessoa where cod_pessoa = (select fk_pessoa_cod_pessoa from cadastrados where rg = '2020'); 
+
+select cod_casa, fk_endereco_cod_end, fk_delegacia_cod_delegacia, fk_cadastrados_fk_pessoa_cod_pessoa from casa 
+inner join possui_cadastrados_casa on (fk_casa_cod_casa = cod_casa) 
+where fk_cadastrados_fk_pessoa_cod_pessoa = (select fk_cadastrados_fk_pessoa_cod_pessoa from usuario where fk_sangue_cod_sanguineo = 3);
+
+select * from sensor inner join captura on (cod_sensor = fk_sensor_cod_sensor) 
+inner join possui_casa_captura on (cod_captura = fk_captura_cod_captura)
+where fk_casa_cod_casa = (select cod_casa from casa where fk_delegacia_cod_delegacia = 1);
 
 #### 9.11	LISTA DE CODIGOS DAS FUNÇÕES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.
