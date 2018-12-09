@@ -111,12 +111,10 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica).
 	<br>
 	Casa: Em nosso projeto optamos por uma tabela casa, para armazenar dados referentes ao código de casa casa registrada.
-	<br>
-	Delegacia: Em nosso projeto optamos por uma tabela delegacia, para armazenar informaçôes referentes as delegacias que auxiliam os usuários cadastrados em situação de de perigo(no caso, violência doméstica). 
    	<br>
 	Endereço: Em nosso projeto optamos por uma tabela endereço, para filtrar dados referentes ao endereço dos usuários em consultas futuras.
    	<br>
-	Bairro:Em nosso projeto optamos por uma tabela bairro, para filtrar dados e relatórios referente ao bairro do usuário cadastrado em consultas futuras.
+	Bairro: Em nosso projeto optamos por uma tabela bairro, para filtrar dados e relatórios referente ao bairro do usuário cadastrado em consultas futuras.
 	<br>
 	Cidade: Em nosso projeto optamos por uma tabela cidade, para filtrar dados e relatórios referente a cidade dos usuários cadastrados.
 	<br>
