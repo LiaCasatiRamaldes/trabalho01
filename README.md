@@ -48,8 +48,8 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
     b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!<br>
     
     1- Relatório com os sons mais captados.<br>
-    2- Relatório com as idades das vitimas que mais registraram no sistema.<br>
-    3- Relatório do adiministrador que mais registrou casos de violencia domestica.<br>
+    2- Relatório com a quantidade de vezes que um sensor foi acionado.<br>
+    3- Relatório de casas que não houveram nenhum registro no último semestre.<br>
     4- Relatório com as cidades/bairros/estados onde mais ocorrem violências domésticas.<br>
     5- Relatório com as delegacias que mais registraram boletins de ocorrência.<br> 
     
