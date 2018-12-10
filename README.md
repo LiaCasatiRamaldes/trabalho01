@@ -231,7 +231,7 @@ Neste ponto a codificação não e necessária, somente as ideias de telas devem
 
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/Modelo_logico_VD.PNG)
+![Alt text](https://github.com/SensorDeViolenciaDomestica/trabalho01/blob/master/imagens/Imagem_modeloLogicoVD.PNG)
         a) inclusão do modelo lógico do banco de dados
         b) verificação de correspondencia com o modelo conceitual 
         (não serão aceitos modelos que não estejam em conformidade)
