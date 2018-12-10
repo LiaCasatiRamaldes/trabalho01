@@ -1111,6 +1111,7 @@ select * from casa left join possui_cadastrados_casa on (fk_casa_cod_casa = cod_
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join
+	Não localizamos nenhuma função que envolva Self Join
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
 #### 9.10	SUBCONSULTAS (Mínimo 3)<br>
 
